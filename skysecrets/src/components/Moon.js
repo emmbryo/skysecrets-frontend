@@ -5,34 +5,32 @@ const Moon = () => {
 
   const [phase, setPhase] = useState(0)
   const [phaseText, setPhaseText] = useState('Waxing Crescent')
-  const [error, setError] = useState(null)
-  const { data } = useFetch('http://localhost:8000/moon')
-  console.log(data)
+  const [growing] = useState(['waxing crescent', 'first quarter', 'waxing gibbous'])
+  const [moonClass, setMoonClass] = useState('moon-container-growing')
+  const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/moon')
 
   function handleCLick () {
-    setPhase(100)
-    setPhaseText('Full Moon')
+    setPhase(80)
+    setPhaseText('Waning crescent')
+    setMoonClass('moon-container-decreasing')
   }
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/v1/moon')
-      .then(res => {
-        if(!res.ok) {
-          throw Error('Something went wrong with the fetch.')
-        }
-        return res.json()
-      })
-      .then(data => {
-        console.log(data)
-        setPhase(data.illumination)
-        setPhaseText(data.current_phase)
-        setError(null)
-      })
-      .catch(err => {
-        console.log(err)
-        setError(err.message)
-      })
-  }, [])
+    if (data) {
+      // console.log('i useEffect', data.illumination)
+      setPhase(data.illumination)
+      setPhaseText(data.current_phase)
+    }
+  }, [data])
+
+  /*if (growing.includes(phaseText.toLowerCase())) {
+    console.log('the moon is on the grow!');
+    setMoonClass('moon-container-growing')
+  } else {
+    console.log('the moon is going back to darkness!');
+    setMoonClass('moon-container-decreasing')
+  }*/
+
 
   let widthLeft, widthRight
   if (phase < 51) {
@@ -46,27 +44,28 @@ const Moon = () => {
   return ( 
     <div id="the-moon"> 
       {error && <div className="error-message">{ error }</div>}
-      <div className="moon-container">
-      <div id="circle-wrap" > 
-        <div id="moon">  
+      { isPending && (<p>Loading...</p>)}
+      { !isPending && (<div className={ moonClass }>
+        <div id="circle-wrap" > 
+          <div id="moon">  
+          </div>
+          <div id="cover" 
+            style={{ 
+              left: `${phase}px`, 
+              width: `${widthRight}px`
+            }}>  
+          </div>
+          <div id="cover-right" 
+            style={{ 
+              right: `${100 - phase}px`, 
+              width: `${widthLeft}px`
+            }}>  
+          </div>
         </div>
-        <div id="cover" 
-          style={{ 
-            left: phase, 
-            width: widthRight
-          }}>  
-        </div>
-        <div id="cover-right" 
-          style={{ 
-            right: 100 - phase, 
-            width: widthLeft
-          }}>  
-        </div>
-      </div>
-    </div>
+      </div> )}
       <p>Moon Phase: { phaseText }</p>
       <p>Illumination: { phase }%</p>
-      <button onClick={handleCLick}>Full Moon</button>
+      <button onClick={handleCLick}>Change moon</button>
     </div>  
    );
 }

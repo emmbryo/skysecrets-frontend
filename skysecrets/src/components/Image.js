@@ -3,13 +3,13 @@ import { useState } from 'react'
 
 const Image = () => {
 
-  const imageData = useFetch('http://localhost:8080/api/v1/image')
-  console.log('I Image comp', imageData.data.url)
+  const {data, isPending, error} = useFetch('http://localhost:8080/api/v1/image')
+  console.log('I Image comp', data.url)
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
 
   function showDescription () {
-    setExplanation(imageData.data.explanation)
+    setExplanation(data.explanation)
     setDescriptionShown(true)
   }
   function hideDescription () {
@@ -20,20 +20,23 @@ const Image = () => {
 
   return ( 
     <div className="space-image">
-      { imageData.data.title && (
-        <p>{ imageData.data.title }</p>
+      { isPending && (
+        <p>Loading...</p>
       )}
-      { imageData.data.url && (
-        <img src={ imageData.data.url } alt="default-space" />
+      { data.title && (
+        <p>{ data.title }</p>
       )}
-      { imageData.data.copyright && (
-        <p>copyright: { imageData.data.copyright }</p>
+      { data.url && (
+        <img src={ data.url } alt="default-space" />
+      )}
+      { data.copyright && (
+        <p>copyright: { data.copyright }</p>
       )}
       { explanation && (
         <p>{ explanation }</p>
       )}
       { descriptionShown && (
-        <button onClick={hideDescription}>Hide</button>
+        <button onClick={hideDescription}>Hide description</button>
       )}
       { !descriptionShown && (
         <button onClick={showDescription}>Description</button>

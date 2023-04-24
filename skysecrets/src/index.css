@@ -24,6 +24,20 @@ code {
   align-items: center; /* vertically center */
 }
 
+.nav {
+  display: flex;
+  flex-direction: rows;
+  gap: 10px;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
 h1 {
   color: white;
   padding: 10px;
@@ -65,13 +79,18 @@ h1 {
   position: relative;
 }
 
-.moon-container {
+.moon-container-growing {
   display: flex;
-  justify-content: center; /* horizontally center */
-  align-items: center; /* vertically center */
+  justify-content: center;
+  align-items: center; 
   margin: 50px;
-  transform: rotateY(180deg) rotateZ(-10deg);
-  
+  transform: rotateY(180deg);
+}
+.moon-container-decreasing {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin: 50px;
 }
 
 #the-moon {
@@ -85,13 +104,13 @@ button {
 }
 
 .space-image {
+  margin-top: 30px;
   text-align: center;
   color: white;
 }
 
 .space-image img {
   width: 500px;
-  margin: 20px;
   border-radius: 5px;
 }
 
@@ -115,5 +134,7 @@ button {
 .aurora img {
   width: 500px;
 }
+
+
 
 

@@ -12,13 +12,13 @@ function App() {
       <div className="content">
         <Switch>
           <Route exact path="/">
-            <Moon />
+            <Image />
           </Route>
           <Route path="/aurora">
            <Aurora /> 
           </Route>
-          <Route path="/image">
-           <Image /> 
+          <Route path="/moon">
+           <Moon /> 
           </Route> 
         </Switch>
       </div>
