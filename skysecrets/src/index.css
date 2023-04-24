@@ -1,8 +1,14 @@
+@font-face {
+  font-family: oldNewspaper;
+  src: url('../OldNewspaperTypes.ttf');
+  /* src: url('../Brusher.ttf')*/
+}
+
 body {
+  font-family: oldNewspaper;
+  background-color: rgb(47, 45, 70);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 50px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,3 +17,103 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
+h1 {
+  color: white;
+  padding: 10px;
+  border: solid 1px white;
+  border-radius: 5px;
+  width: max-content;
+  text-align: center;
+  margin: auto;
+}
+
+#moon {
+  position: relative;
+  width: 100px; /* adjust the size of the circle */
+  height: 100px;
+  border-radius: 50%; /* create a circular shape */
+  background: linear-gradient(to right, white 50%, rgb(47, 45, 70) 50%);
+  margin: auto;
+}
+#cover {
+  width: 100px; /* adjust the size of the circle */
+  height: 100px;
+  background-color: rgb(47, 45, 70);
+  border-radius: 50%; /* create a circular shape */
+  position: absolute;
+}
+
+#cover-right {
+  width: 100px; /* adjust the size of the circle */
+  height: 100px;
+  background-color: white;
+  border-radius: 50%; /* create a circular shape */
+  position: absolute;
+}
+
+#circle-wrap {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.moon-container {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+  margin: 50px;
+  transform: rotateY(180deg) rotateZ(-10deg);
+  
+}
+
+#the-moon {
+  text-align: center;
+  color: white;
+  height: 500px;
+}
+
+button {
+  font-family: oldNewspaper;
+}
+
+.space-image {
+  text-align: center;
+  color: white;
+}
+
+.space-image img {
+  width: 500px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.Header {
+  text-align: center;
+  color: white
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  border: solid 1px white;
+  margin: 10px;
+}
+
+.aurora {
+  margin: 20px;
+}
+
+.aurora img {
+  width: 500px;
+}
+
+

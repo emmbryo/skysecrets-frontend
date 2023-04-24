@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Moon from "./components/Moon"
+import Header from "./components/Header"
+import Aurora from "./components/Aurora"
+import Image from "./components/Image"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom/cjs/react-router-dom.min"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div className="App">
+      <Header />
+      <div className="content">
+        <Switch>
+          <Route exact path="/">
+            <Moon />
+          </Route>
+          <Route path="/aurora">
+           <Aurora /> 
+          </Route>
+          <Route path="/image">
+           <Image /> 
+          </Route> 
+        </Switch>
+      </div>
     </div>
-  );
+    </Router>
+  )
 }
 
-export default App;
+export default App
