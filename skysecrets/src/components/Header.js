@@ -7,6 +7,7 @@ const Header = () => {
         <Link to="/">Start</Link>
         <Link to="/moon">Moon</Link>
         <Link to="/aurora">Aurora</Link>
+        <Link to="/map">Map</Link>
       </div>
       <h1>SkySecrets</h1>
     </div>

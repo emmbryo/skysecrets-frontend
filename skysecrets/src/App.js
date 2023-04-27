@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import Aurora from "./components/Aurora"
 import Image from "./components/Image"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/cjs/react-router-dom.min"
+import Map from "./components/Map"
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           <Route path="/moon">
            <Moon /> 
           </Route> 
+          <Route path="/map">
+            <Map />
+          </Route>
         </Switch>
       </div>
     </div>

@@ -17,7 +17,6 @@ const Moon = () => {
 
   useEffect(() => {
     if (data) {
-      // console.log('i useEffect', data.illumination)
       setPhase(data.illumination)
       setPhaseText(data.current_phase)
       if (['Waxing Crescent', 'First Quarter', 'Waxing Gibbous'].includes(data.current_phase)) {
@@ -27,15 +26,6 @@ const Moon = () => {
       }
     }
   }, [data])
-
-  /*if (growing.includes(phaseText.toLowerCase())) {
-    console.log('the moon is on the grow!');
-    setMoonClass('moon-container-growing')
-  } else {
-    console.log('the moon is going back to darkness!');
-    setMoonClass('moon-container-decreasing')
-  }*/
-
 
   let widthLeft, widthRight
   if (phase < 51) {
