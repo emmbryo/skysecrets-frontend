@@ -10,7 +10,7 @@ const Moon = () => {
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/moon')
 
   function handleCLick () {
-    setPhase(80)
+    setPhase(9)
     setPhaseText('Waning crescent')
     setMoonClass('moon-container-decreasing')
   }
@@ -20,6 +20,11 @@ const Moon = () => {
       // console.log('i useEffect', data.illumination)
       setPhase(data.illumination)
       setPhaseText(data.current_phase)
+      if (['Waxing Crescent', 'First Quarter', 'Waxing Gibbous'].includes(data.current_phase)) {
+        setMoonClass('moon-container-growing')
+      } else {
+        setMoonClass('moon-container-decreasing')
+      }
     }
   }, [data])
 
