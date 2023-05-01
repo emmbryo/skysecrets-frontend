@@ -5,7 +5,6 @@ const Moon = () => {
 
   const [phase, setPhase] = useState(0)
   const [phaseText, setPhaseText] = useState('Waxing Crescent')
-  const [growing] = useState(['waxing crescent', 'first quarter', 'waxing gibbous'])
   const [moonClass, setMoonClass] = useState('moon-container-growing')
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/moon')
 
@@ -19,7 +18,7 @@ const Moon = () => {
     if (data) {
       setPhase(data.illumination)
       setPhaseText(data.current_phase)
-      if (['Waxing Crescent', 'First Quarter', 'Waxing Gibbous'].includes(data.current_phase)) {
+      if (['Waxing Crescent', '1st Quarter', 'Waxing Gibbous'].includes(data.current_phase)) {
         setMoonClass('moon-container-growing')
       } else {
         setMoonClass('moon-container-decreasing')

@@ -122,6 +122,15 @@ button {
   border-radius: 5px;
 }
 
+#default-img {
+  width: 300px;
+  border-radius: 5px;
+}
+
+#image-explanation {
+  width: 500px;
+}
+
 .Header {
   text-align: center;
   color: white
@@ -150,6 +159,10 @@ button {
 
 .map-container {
   margin: 20px;
+}
+
+.map {
+  border-radius: 5px;
 }
 
 

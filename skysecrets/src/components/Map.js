@@ -16,10 +16,33 @@ const Map = () => {
 
   const handleCLick = (event) => {
     setPosition([event.latlng.lat, event.latlng.lng])
+    setShowCoord(true)
   }
 
   const handleSubmit = (event) => {
-    console.log(position)
+    console.log('I handle submit', position)
+
+    const locationObject = {
+      location: {
+        lat: position[0],
+        lng: position[1]
+      }
+    }
+    fetch('http://localhost:8080/api/v1/settings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(locationObject)
+    }).then(response => {
+      if(!response.ok) {
+        throw Error('Something went wrong with the fetch.')
+      }
+      return response.json()
+    }).then(data => {
+      console.log('fetch klart: ', data)
+    })
+
     setShowCoord(true)
   }
 
@@ -33,8 +56,9 @@ const Map = () => {
   return ( 
     <div className="map-container">
       <MapContainer 
+        className='map'
         center={vasaMuseet} 
-        zoom={4} 
+        zoom={3} 
         onClick={handleCLick}
         >
         <TileLayer

@@ -1,5 +1,6 @@
 import useFetch from '../functions/useFetch';
 import { useState } from 'react'
+import defaultImage from '../img/default.jpg'
 
 const Image = () => {
 
@@ -23,17 +24,26 @@ const Image = () => {
       { isPending && (
         <p>Loading...</p>
       )}
+      { error && (
+        <p>An error occured: { error }</p>
+      )}
       { data.title && (
         <p>{ data.title }</p>
       )}
+      { error && (
+        <div>
+          <p>Image of the day could not be loaded...</p>
+          <img id="default-img" src={ defaultImage } alt="default" />
+        </div>
+      )}
       { data.url && (
-        <img src={ data.url } alt="default-space" />
+        <img src={ data.url } alt="daily" />
       )}
       { data.copyright && (
         <p>copyright: { data.copyright }</p>
       )}
       { explanation && (
-        <p>{ explanation }</p>
+        <p id="image-explanation">{ explanation }</p>
       )}
       { descriptionShown && (
         <button onClick={hideDescription}>Hide description</button>
