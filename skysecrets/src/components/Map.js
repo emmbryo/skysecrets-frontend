@@ -78,11 +78,11 @@ const Map = () => {
           <MapEvents handleClick={handleCLick} />     
       </MapContainer>
       <div className="map-footer">
-        <button onClick={handleSubmit}>Set location</button>
+        <button id="map-button" onClick={handleSubmit}>Set location</button>
         {showCoord && 
           ( <div className="position-coord">
-            <p>latitude: {position[0]}</ p> 
-            <p>longitude: {position[1]} </p>
+            <p>latitude: {position[0].toFixed(4)}</ p> 
+            <p>longitude: {position[1].toFixed(4)} </p>
           </div> )}
       </div>
       

@@ -52,7 +52,7 @@ h1 {
   margin: auto;
 }
 
-.start-container {
+.start-container, .planets-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -60,8 +60,9 @@ h1 {
   align-items: center; /* vertically center */
 }
 
-.planets-container {
-  width: 100px;
+.start-container a {
+  text-decoration: none;
+  color: rgb(47, 45, 70);
 }
 
 .planets-container img {
@@ -173,12 +174,20 @@ button {
   height: 500px;
 }
 
-.map-container {
+.map-container, .map-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
   margin: 20px;
 }
 
 .map {
   border-radius: 5px;
+}
+
+#map-button {
+  margin: 10px;
 }
 
 
