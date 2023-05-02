@@ -3,6 +3,7 @@ import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useState } from 'react'
 import iconImage from '../img/placeholder.png'
+import { useHistory } from 'react-router-dom'
 
 const Map = () => {
 
@@ -13,6 +14,7 @@ const Map = () => {
     iconUrl: iconImage,
     iconSize: [38, 38]
   })
+  const history = useHistory()
 
   const handleCLick = (event) => {
     setPosition([event.latlng.lat, event.latlng.lng])
@@ -42,8 +44,9 @@ const Map = () => {
     }).then(data => {
       console.log('fetch klart: ', data)
     })
-
     setShowCoord(true)
+    history.push('/moon')
+
   }
 
   function MapEvents({ handleClick }) {
@@ -75,7 +78,7 @@ const Map = () => {
           <MapEvents handleClick={handleCLick} />     
       </MapContainer>
       <div className="map-footer">
-        <button onClick={handleSubmit}>Set position</button>
+        <button onClick={handleSubmit}>Set location</button>
         {showCoord && 
           ( <div className="position-coord">
             <p>latitude: {position[0]}</ p> 

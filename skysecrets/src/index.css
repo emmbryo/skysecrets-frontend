@@ -52,6 +52,22 @@ h1 {
   margin: auto;
 }
 
+.start-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
+.planets-container {
+  width: 100px;
+}
+
+.planets-container img {
+  width: 100px;
+}
+
 #moon {
   position: relative;
   width: 100px; /* adjust the size of the circle */
