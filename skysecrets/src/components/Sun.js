@@ -1,6 +1,6 @@
 import useFetchPost from "../functions/useFetchPost"
-import { useContext, useEffect, useState } from "react";
-import { LocationContext } from "../context/LocationContext";
+import { useContext, useEffect, useState } from "react"
+import { LocationContext } from "../context/LocationContext"
 
 const Sun = () => {
 
@@ -9,9 +9,9 @@ const Sun = () => {
   const [times, setTimes] = useState({sunrise: '00:00', sunset: '00:00'})
 
   useEffect(() => {
-    setTimes(postData)
-  }, [postData])
-  
+    let newTimes = postData
+    setTimes(newTimes)
+  }, [postData]);  
 
   return ( 
     <div className="sun-container">

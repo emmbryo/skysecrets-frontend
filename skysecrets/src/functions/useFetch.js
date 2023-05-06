@@ -15,7 +15,6 @@ const useFetch = (url) => {
         return res.json()
       })
       .then(data => {
-        console.log('inne i fetch', data)
         setData(data)
         setIsPending(false)
         setError(null)
@@ -24,7 +23,7 @@ const useFetch = (url) => {
         setIsPending(false)
         setError(err.message)
       })
-  }, [url])
+  }, [])
 
   return { data, isPending, error }
 }

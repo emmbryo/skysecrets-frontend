@@ -14,13 +14,6 @@ const Moon = () => {
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/moon/times', { lat: location[0], lng: location[1] })
   console.log('I moon: ', postData, postIsPending, postError)
 
-
-  function handleCLick () {
-    setPhase(9)
-    setPhaseText('Waning crescent')
-    setMoonClass('moon-container-decreasing')
-  }
-
   useEffect(() => {
     if (data) {
       setPhase(data.illumination)
@@ -69,7 +62,6 @@ const Moon = () => {
       <p>Illumination: { phase }%</p>
       <p>latitude: { location[0].toFixed(4) }</p>
       <p>longitude: { location[1].toFixed(4) }</p>
-      <button onClick={ handleCLick }>Change moon</button>
     </div>  
    );
 }

@@ -29,7 +29,7 @@ const useFetchPost = (url, requestData) => {
         setPostIsPending(false)
         setPostError(err.message)
       })
-  }, [url, requestData])
+  }, [])
 
   return { postData, postIsPending, postError }
 }
