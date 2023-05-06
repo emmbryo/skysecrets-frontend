@@ -1,33 +1,33 @@
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import iconImage from '../img/placeholder.png'
 import { useHistory } from 'react-router-dom'
+import { LocationContext } from '../context/LocationContext'
 
 const Map = () => {
 
-  const vasaMuseet = [59.32915892217842, 18.093897700309757]
-  const [position, setPosition] = useState(vasaMuseet)
   const [showCoord, setShowCoord] = useState(false)
   const customIcon = new Icon({
     iconUrl: iconImage,
     iconSize: [38, 38]
   })
   const history = useHistory()
+  const {location, setLocation} = useContext(LocationContext)
 
   const handleCLick = (event) => {
-    setPosition([event.latlng.lat, event.latlng.lng])
+    setLocation([event.latlng.lat, event.latlng.lng])
     setShowCoord(true)
   }
 
   const handleSubmit = (event) => {
-    console.log('I handle submit', position)
+    console.log('I handle submit', location)
 
     const locationObject = {
       location: {
-        lat: position[0],
-        lng: position[1]
+        lat: location[0],
+        lng: location[1]
       }
     }
     fetch('http://localhost:8080/api/v1/settings', {
@@ -60,7 +60,7 @@ const Map = () => {
     <div className="map-container">
       <MapContainer 
         className='map'
-        center={vasaMuseet} 
+        center={location} 
         zoom={3} 
         onClick={handleCLick}
         >
@@ -68,7 +68,7 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {position && <Marker position={position} icon={customIcon}>
+        {location && <Marker position={location} icon={customIcon}>
             <Popup>
               <h2>
                 Popup!
@@ -81,8 +81,8 @@ const Map = () => {
         <button id="map-button" onClick={handleSubmit}>Set location</button>
         {showCoord && 
           ( <div className="position-coord">
-            <p>latitude: {position[0].toFixed(4)}</ p> 
-            <p>longitude: {position[1].toFixed(4)} </p>
+            <p>latitude: {location[0].toFixed(4)}</ p> 
+            <p>longitude: {location[1].toFixed(4)} </p>
           </div> )}
       </div>
       

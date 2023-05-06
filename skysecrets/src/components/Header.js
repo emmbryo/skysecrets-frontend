@@ -9,6 +9,7 @@ const Header = () => {
         <Link to="/moon">Moon</Link>
         <Link to="/aurora">Aurora</Link>
         <Link to="/planets">Planets</Link>
+        <Link to="/sun">Sun</Link>
       </div>
       <h1>SkySecrets</h1>
     </div>

@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react"
 import useFetch from "../functions/useFetch"
+import useFetchPost from "../functions/useFetchPost";
+import { useContext } from "react";
+import { LocationContext } from "../context/LocationContext";
 
 const Moon = () => {
 
@@ -7,6 +10,10 @@ const Moon = () => {
   const [phaseText, setPhaseText] = useState('Waxing Crescent')
   const [moonClass, setMoonClass] = useState('moon-container-growing')
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/moon')
+  const { location } = useContext(LocationContext)
+  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/moon/times', { lat: location[0], lng: location[1] })
+  console.log('I moon: ', postData, postIsPending, postError)
+
 
   function handleCLick () {
     setPhase(9)
@@ -26,6 +33,7 @@ const Moon = () => {
     }
   }, [data])
 
+  // The illumination of the moon image
   let widthLeft, widthRight
   if (phase < 51) {
     widthLeft = 0
@@ -59,7 +67,9 @@ const Moon = () => {
       </div> )}
       <p>Moon Phase: { phaseText }</p>
       <p>Illumination: { phase }%</p>
-      <button onClick={handleCLick}>Change moon</button>
+      <p>latitude: { location[0].toFixed(4) }</p>
+      <p>longitude: { location[1].toFixed(4) }</p>
+      <button onClick={ handleCLick }>Change moon</button>
     </div>  
    );
 }
