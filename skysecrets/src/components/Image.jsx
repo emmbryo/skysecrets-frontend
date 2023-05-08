@@ -5,7 +5,6 @@ import defaultImage from '../img/default.jpg'
 const Image = () => {
 
   const {data, isPending, error} = useFetch('http://localhost:8080/api/v1/image')
-  console.log('I Image comp', data.url)
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
 

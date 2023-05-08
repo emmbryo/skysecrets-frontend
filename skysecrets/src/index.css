@@ -6,7 +6,7 @@
 
 body {
   font-family: oldNewspaper;
-  background-color: rgb(47, 45, 70);
+  background-color: rgb(25, 24, 47);
   margin: 0;
   padding: 50px;
   -webkit-font-smoothing: antialiased;
@@ -42,7 +42,7 @@ p {
   margin-bottom: 10px;
 }
 
-h1 {
+h1, h2 {
   color: white;
   padding: 10px;
   border: solid 1px white;
@@ -52,7 +52,7 @@ h1 {
   margin: auto;
 }
 
-.start-container, .planets-container {
+.start-container, .planets-container, .text {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -63,6 +63,15 @@ h1 {
 .start-container a {
   text-decoration: none;
   color: rgb(47, 45, 70);
+}
+
+.start-container .text {
+  width: 200px;
+  text-align: center;
+}
+
+.start-container button {
+  width: 120px;
 }
 
 .planets-container img {
@@ -174,7 +183,7 @@ button {
   height: 500px;
 }
 
-.map-container, .map-footer {
+.map-container, .map-footer, .sun-container, #sun {
   display: flex;
   flex-direction: column;
   justify-content: center; /* horizontally center */

@@ -18,11 +18,12 @@ const Sun = () => {
       {postError && <div className="error-message">{ postError }</div>}
       { postIsPending && (<p>Loading...</p>)}
       { !postIsPending && times && (
-        <div>
-          <div>
+        <div id="sun">
+            <div>
+              <img src="https://sdo.gsfc.nasa.gov/assets/img/latest/latest_512_0193.jpg" alt="current sun"/>
+            </div>
             <p>Sunrise: {times.sunrise}</p>
             <p>Sunset: {times.sunset}</p>
-          </div> 
         </div>
         )}
         <div>
