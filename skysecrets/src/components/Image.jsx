@@ -19,7 +19,7 @@ const Image = () => {
   }
 
   return ( 
-    <div className="space-image">
+    <div className="space-image-container">
       { isPending && (
         <p>Loading...</p>
       )}
@@ -36,7 +36,9 @@ const Image = () => {
         </div>
       )}
       { data.url && (
-        <img src={ data.url } alt="daily" />
+        <div className="space-image">
+          <img src={ data.url } alt="daily" />
+        </div>
       )}
       { data.copyright && (
         <p>copyright: { data.copyright }</p>

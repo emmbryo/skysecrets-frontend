@@ -19,7 +19,7 @@ const Sun = () => {
       { postIsPending && (<p>Loading...</p>)}
       { !postIsPending && times && (
         <div id="sun">
-            <div>
+            <div className="sun-image">
               <img src="https://sdo.gsfc.nasa.gov/assets/img/latest/latest_512_0193.jpg" alt="current sun"/>
             </div>
             <p>Sunrise: {times.sunrise}</p>

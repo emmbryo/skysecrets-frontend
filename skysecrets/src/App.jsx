@@ -4,12 +4,13 @@ import Aurora from "./components/Aurora"
 import Image from "./components/Image"
 import Map from "./components/Map"
 import Start from "./components/Start"
-import Planets from "./components/Planets"
+import Planets from "./components/Planets/Planets"
 import Sun from "./components/Sun"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/cjs/react-router-dom.min"
 
 import { LocationContext } from "./context/LocationContext"
 import { useState } from "react"
+import Overview from "./components/Overview"
 
 function App() {
   const vasaMuseet = [59.32915892217842, 18.093897700309757]
@@ -42,6 +43,9 @@ function App() {
             </Route> 
             <Route path="/planets">
               <Planets />
+            </Route>
+            <Route path="/overview">
+              <Overview />
             </Route>
           </LocationContext.Provider>
         </Switch>
