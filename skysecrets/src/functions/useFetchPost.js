@@ -29,6 +29,7 @@ const useFetchPost = (url, requestData) => {
         setPostIsPending(false)
         setPostError(err.message)
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return { postData, postIsPending, postError }

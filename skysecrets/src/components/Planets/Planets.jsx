@@ -5,13 +5,15 @@ import Jupiter from './Jupiter'
 import Saturn from './Saturn'
 import Sidebar from './Sidebar'
 import { useState } from 'react'
+import PlanetsOverview from './PlanetsOverview'
 
 const Planets = () => {
   const [ifMercury, setIfMercury] = useState(false)
   const [ifVenus, setIfVenus] = useState(false)
   const [ifMars, setIfMars] = useState(false)
-  const [ifJupiter, setIfJupiter] = useState(true)
+  const [ifJupiter, setIfJupiter] = useState(false)
   const [ifSaturn, setIfSaturn] = useState(false)
+  const [ifOverview, setIfOverview] = useState(true)
 
   const allToFalse = () => {
     setIfJupiter(false)
@@ -19,6 +21,7 @@ const Planets = () => {
     setIfSaturn(false)
     setIfVenus(false)
     setIfMercury(false)
+    setIfOverview(false)
   }
 
   const handleClick = (event) => {
@@ -31,9 +34,9 @@ const Planets = () => {
       case "venus":
         setIfVenus(true)
         break
-        case "mars":
-          setIfMars(true)
-          break
+      case "mars":
+        setIfMars(true)
+        break
       case "jupiter":
         setIfJupiter(true)
         break
@@ -41,6 +44,7 @@ const Planets = () => {
         setIfSaturn(true)
         break
       default:
+        setIfOverview(true)
         break
     }
   }
@@ -51,6 +55,7 @@ const Planets = () => {
         <Sidebar />
       </div>
       <div className="planet-info">
+        {ifOverview && (<PlanetsOverview />) }
         {ifMercury && (<Mercury/>)}
         {ifVenus && (<Venus />)}
         {ifMars && (<Mars />)}
