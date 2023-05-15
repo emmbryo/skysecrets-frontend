@@ -50,7 +50,7 @@ const Image = () => {
         <button onClick={hideDescription}>Hide description</button>
       )}
       { !descriptionShown && (
-        <button onClick={showDescription}>Description</button>
+        <button onClick={showDescription}>Show description</button>
       )}
     </div>
    );

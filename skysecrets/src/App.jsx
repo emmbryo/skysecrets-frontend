@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom/cjs/rea
 import { LocationContext } from "./context/LocationContext"
 import { useState } from "react"
 import Overview from "./components/Overview"
+import Kindex from "./components/Kindex"
+import Jupiter from "./components/Planets/Jupiter"
 
 function App() {
   const vasaMuseet = [59.32915892217842, 18.093897700309757]
@@ -46,6 +48,12 @@ function App() {
             </Route>
             <Route path="/overview">
               <Overview />
+            </Route>
+            <Route path="/index">
+              <Kindex />
+            </Route>
+            <Route path="/planets/jupiter">
+              <Jupiter />
             </Route>
           </LocationContext.Provider>
         </Switch>

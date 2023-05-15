@@ -1,17 +1,20 @@
-import mercury from '../../img/planets/mercury.png'
-import venus from '../../img/planets/venus.png'
-import mars from '../../img/planets/mars.png'
-import jupiter from '../../img/planets/jupiter.png'
-import saturn from '../../img/planets/saturn.png'
+import { Link } from 'react-router-dom'
+import mercury from './img/mercury.png'
+import venus from './img/venus.png'
+import mars from './img/mars.png'
+import jupiter from './img/jupiter.png'
+import saturn from './img/saturn.png'
 
 const Sidebar = () => {
   return ( 
     <div className="sidebar-container">
-      <img src={ mercury } alt="mercury"/>
-      <img src={ venus } alt="venus"/>
-      <img src={ mars } alt="mars"/>
-      <img src={ jupiter } alt="jupiter"/>
-      <img src={ saturn } alt="saturn"/>
+      <Link to="./planets/mercury"><img src={ mercury } alt="mercury"/></Link>
+      <Link to="planets/venus"><img src={ venus } alt="venus"/></Link>
+      <Link to="planets/mars"><img src={ mars } alt="mars"/></Link>
+      <Link to="planets/jupiter" onClick={(event) => {
+        console.log(event.target.alt)
+      }}><img src={ jupiter } alt="jupiter"/></Link>
+      <Link to="planets/saturn"><img src={ saturn } alt="saturn"/></Link>  
     </div>
    );
 }

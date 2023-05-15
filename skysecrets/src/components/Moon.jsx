@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import useFetch from "../functions/useFetch"
-import useFetchPost from "../functions/useFetchPost";
-import { useContext } from "react";
-import { LocationContext } from "../context/LocationContext";
+import useFetchPost from "../functions/useFetchPost"
+import { useContext } from "react"
+import { LocationContext } from "../context/LocationContext"
 
 const Moon = () => {
 

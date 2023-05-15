@@ -10,6 +10,7 @@ const Header = () => {
         <Link to="/aurora">Aurora</Link>
         <Link to="/planets">Planets</Link>
         <Link to="/sun">Sun</Link>
+        <Link to="/index">Index</Link>
       </div>
       <h1>SkySecrets</h1>
     </div>
