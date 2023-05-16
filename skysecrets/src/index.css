@@ -304,5 +304,69 @@ button {
   background: rgb(171, 3, 3);
 }
 
+/* sun and moon overview */
+.sun-moon-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.sun-and-moon {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  text-align: center;
+  color: white;
+}
+
+.sun-overview, .moon-overview {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  text-align: center;
+  color: white;
+}
+
+/* aurora-overview */
+.aurora-overview img {
+  width: 150px;
+}
+
+/* planets-overview */
+.planets-overview-container {
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+  text-align: center;
+  margin: 20px;
+}
+
+.planets-overview-images {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  text-align: center;
+  color: white;
+}
+
+.round-planets {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  text-align: center;
+  color: white;
+}
+
+.planets-overview-images img {
+  width: 40px;
+}
+
+.planets-overview-images #saturn {
+  width: 80px;
+}
+
+.under-horizon {
+  opacity: 30%;
+}
+
 
 
