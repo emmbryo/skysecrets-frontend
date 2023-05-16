@@ -1,11 +1,15 @@
-import PlanetsOverview from "./PlanetsOverview";
-import AuroraOverview from "./AuroraOverview";
-import SunAndMoon from "./SunAndMoon";
+import PlanetsOverview from "./PlanetsOverview"
+import AuroraOverview from "./AuroraOverview"
+import SunAndMoon from "./SunAndMoon"
+import Location from "../Location"
 
 const Overview = () => {
   return ( 
     <div className="overview-container" data-testid="overview">
       <p></p>
+      <div className="location">
+        <Location />
+      </div>
       <div className="sun-and-moon">
         <SunAndMoon />
       </div>

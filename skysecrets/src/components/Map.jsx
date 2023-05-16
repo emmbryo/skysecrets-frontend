@@ -45,7 +45,7 @@ const Map = () => {
       console.log('fetch klart: ', data)
     })
     setShowCoord(true)
-    history.push('/moon')
+    history.push('/overview')
 
   }
 

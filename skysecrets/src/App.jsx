@@ -6,12 +6,13 @@ import Map from "./components/Map"
 import Start from "./components/Start"
 import Planets from "./components/Planets/Planets"
 import Sun from "./components/Sun"
+import Overview from "./components/Overview/Overview"
+import Kindex from "./components/Kindex"
+import Location from "./components/Location"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/cjs/react-router-dom.min"
 
 import { LocationContext } from "./context/LocationContext"
 import { useState } from "react"
-import Overview from "./components/Overview/Overview"
-import Kindex from "./components/Kindex"
 
 function App() {
   const vasaMuseet = [59.32915892217842, 18.093897700309757]
@@ -50,6 +51,9 @@ function App() {
             </Route>
             <Route path="/index">
               <Kindex />
+            </Route>
+            <Route path="/location">
+              <Location />
             </Route>
           </LocationContext.Provider>
         </Switch>

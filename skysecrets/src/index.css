@@ -4,6 +4,8 @@
   /* src: url('../Brusher.ttf')*/
 }
 
+
+
 body {
   font-family: oldNewspaper;
   background-color: rgb(13, 12, 25);
@@ -272,6 +274,23 @@ button {
   margin: 10px;
 }
 
+/* locatio */
+.location-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
+.location-container img {
+  width: 40px;
+}
+
+.location-container p {
+  margin: 0px;
+}
+
 /* k index
 .kindex-container {
 
@@ -310,7 +329,6 @@ button {
 .sun-moon-icon {
   width: 40px;
   height: 40px;
-  margin-top: 20px;
 }
 
 .sun-and-moon {
@@ -319,6 +337,11 @@ button {
   flex-direction: row;
   text-align: center;
   color: white;
+  margin-top: 10px;
+}
+
+.sun-and-moon p {
+  margin: 0px;
 }
 
 .sun-overview, .moon-overview {
