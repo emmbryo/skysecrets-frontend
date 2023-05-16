@@ -5,7 +5,7 @@ import Jupiter from './Jupiter'
 import Saturn from './Saturn'
 import Sidebar from './Sidebar'
 import { useState } from 'react'
-import PlanetsOverview from './PlanetsOverview'
+import PlanetStartView from './PlanetStartView'
 
 const Planets = () => {
   const [ifMercury, setIfMercury] = useState(false)
@@ -55,7 +55,7 @@ const Planets = () => {
         <Sidebar />
       </div>
       <div className="planet-info">
-        {ifOverview && (<PlanetsOverview />) }
+        {ifOverview && (<PlanetStartView />)}
         {ifMercury && (<Mercury/>)}
         {ifVenus && (<Venus />)}
         {ifMars && (<Mars />)}

@@ -1,11 +1,11 @@
-import PlanetsOverview from "../Planets/PlanetsOverview";
+import PlanetsOverview from "./PlanetsOverview";
 import AuroraOverview from "./AuroraOverview";
 import SunAndMoon from "./SunAndMoon";
 
 const Overview = () => {
   return ( 
     <div className="overview-container" data-testid="overview">
-      <p>This is the overview. Epic, right?</p> 
+      <p></p>
       <div className="sun-and-moon">
         <SunAndMoon />
       </div>

@@ -11,6 +11,7 @@ const Header = () => {
         <Link to="/planets">Planets</Link>
         <Link to="/sun">Sun</Link>
         <Link to="/index">Index</Link>
+        <Link to="/overview">Overview</Link>
       </div>
       <h1>SkySecrets</h1>
     </div>
