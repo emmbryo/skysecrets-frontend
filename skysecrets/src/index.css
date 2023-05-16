@@ -4,13 +4,11 @@
   /* src: url('../Brusher.ttf')*/
 }
 
-
-
 body {
   font-family: oldNewspaper;
   background-color: rgb(13, 12, 25);
   margin: 0;
-  padding: 50px;
+  padding: 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -34,6 +32,7 @@ p {
   color: white;
 }
 
+/* header */
 .nav {
   display: flex;
   flex-direction: rows;
@@ -54,8 +53,9 @@ h1, h2 {
   border: solid 1px white;
   border-radius: 5px;
   width: max-content;
+  height: max-content;
   text-align: center;
-  margin: auto;
+  margin: 10px 10px 10px auto;
 }
 
 h3 {
@@ -63,7 +63,53 @@ h3 {
   text-align: center;
 }
 
-.start-container, .text, .overview-container, .planet, .show-planet-info, .aurora {
+/* menu */
+
+.menu-head img {
+  width: 50px;
+}
+
+.menu-head {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+  margin-top: 15px;
+}
+
+.menu-wrapper {
+  position: relative;
+}
+
+.drop-down-menu {
+  position: absolute;
+  width: 120px;
+  border-radius: 5px;
+  right: 0px;
+  margin-top: 10px;
+  z-index: 5;
+}
+
+.drop-down-item {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(13, 12, 25);
+  border: solid 1px rgb(47, 45, 70);
+}
+
+.drop-down-item a {
+  text-decoration: none;
+  color: white;
+}
+
+.title-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
+.start-container, .text, .overview-container, .planet, .show-planet-info, .aurora, .header-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -256,6 +302,7 @@ button {
 .leaflet-container {
   width: 300px;
   height: 400px;
+  z-index: 2;
 }
 
 .map-container, .map-footer, .sun-container, #sun {
