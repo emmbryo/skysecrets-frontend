@@ -1,5 +1,5 @@
 import menu from '../img/menu-white.png'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 
 const DropDownMenu = () => {
@@ -24,15 +24,15 @@ const clickLink = (event) => {
         <img src={menu} alt="menu" onClick={menuClick}/>
       </div>
       <div className={shown} onClick={menuClick}>
-        <div className="drop-down-item" id="/" onClick={clickLink}><Link to="/">Start</Link></div>
-        <div className="drop-down-item" id="/map" onClick={clickLink}><Link to="/map">Location</Link></div>
-        <div className="drop-down-item" id="/overview" onClick={clickLink}><Link to="/overview">Overview</Link></div>
-        <div className="drop-down-item" id="/image" onClick={clickLink}><Link to="/image">Image</Link></div>
-        <div className="drop-down-item" id="/aurora" onClick={clickLink}><Link to="/aurora">Aurora</Link></div>
-        <div className="drop-down-item" id="/moon" onClick={clickLink}><Link to="/moon">Moon</Link></div>
-        <div className="drop-down-item" id="/sun" onClick={clickLink}><Link to="/sun">Sun</Link></div>
-        <div className="drop-down-item" id="/planets" onClick={clickLink}><Link to="/planets">Planets</Link></div>
-        <div className="drop-down-item" id="/index" onClick={clickLink}><Link to="/index">K-index</Link></div>
+        <div className="drop-down-item" id="/" onClick={clickLink}>Start</div>
+        <div className="drop-down-item" id="/map" onClick={clickLink}>Location</div>
+        <div className="drop-down-item" id="/overview" onClick={clickLink}>Overview</div>
+        <div className="drop-down-item" id="/image" onClick={clickLink}>Image</div>
+        <div className="drop-down-item" id="/aurora" onClick={clickLink}>Aurora</div>
+        <div className="drop-down-item" id="/moon" onClick={clickLink}>Moon</div>
+        <div className="drop-down-item" id="/sun" onClick={clickLink}>Sun</div>
+        <div className="drop-down-item" id="/planets" onClick={clickLink}>Planets</div>
+        <div className="drop-down-item" id="/index" onClick={clickLink}>K-index</div>
       </div>
     </div>
    );

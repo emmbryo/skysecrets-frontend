@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import { LocationContext } from "../context/LocationContext"
-import globe from '../img/earth.png'
+import globe from '../img/earth-coord.png'
 
 const Location = () => {
 

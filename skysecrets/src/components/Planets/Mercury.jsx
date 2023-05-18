@@ -1,4 +1,5 @@
 import mercury from "./img/mercury.png"
+import earth from './img/earth.png'
 import { useState } from 'react'
 import useFetchPost from '../../functions/useFetchPost'
 import { useContext } from "react"
@@ -24,12 +25,12 @@ const Mercury = () => {
         <div>an error occurred: {postError}</div>
       )}
       {!postIsPending && postData.planetOverHorizon && (
-        <div>
+        <div className="horizon-info">
           <p>Over horizon!</p>
         </div>
       )}
       {!postIsPending && !postData.planetOverHorizon && (
-        <div>
+        <div className="horizon-info">
           <p>Not over horizon :(</p>
         </div>
       )}
@@ -41,22 +42,42 @@ const Mercury = () => {
         {showInfo && (
           <div className="show-planet-info">
             <table className="planet-table">
-          <tbody>
-            <tr>
-              <td>Mass:</td>
-              <td>--- kg</td>
-            </tr>
-            <tr>
-              <td>Diameter:</td>
-              <td>--- m</td>
-            </tr>
-            <tr>
-              <td>Sun distance:</td>
-              <td>--- m</td>
-            </tr>
-          </tbody>
-        </table>
-        <button className="planet-button" onClick={handleClick}>Hide info</button>
+              <tbody>
+                <tr>
+                  <td>Orbital period</td>
+                  <td>88.0 d</td>
+                  <td className="earth-compare">
+                    0.24
+                    <img src={earth} alt="earth" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Surface gravity</td>
+                  <td>3.7 m/s<sup>3</sup></td>
+                  <td className="earth-compare">
+                    0.38
+                    <img src={earth} alt="earth" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Mass</td>
+                  <td>3.3 * 10<sup>23</sup> kg</td>
+                  <td className="earth-compare">
+                    0.06
+                    <img src={earth} alt="earth" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Volume</td>
+                  <td>6.1 * 10<sup>10</sup> km<sup>3</sup></td>
+                  <td className="earth-compare">
+                    0.06
+                    <img src={earth} alt="earth" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button className="planet-button" onClick={handleClick}>Hide info</button>
           </div>
           
         )}

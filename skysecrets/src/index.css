@@ -36,6 +36,10 @@ p {
   color: white;
 }
 
+div {
+  color: white;
+}
+
 /* header */
 .nav {
   display: flex;
@@ -161,6 +165,10 @@ h3 {
   grid-area: planet-side-bar;
 }
 
+.horizon-info {
+  text-align: center;
+}
+
 .planet-info {
   width: 100%;
   grid-area: planet-info;
@@ -172,7 +180,30 @@ h3 {
 
 .planet-table {
   color: white;
+  margin-top: 40px;
 }
+
+.planet-table td {
+  border: solid 0.5px white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 33%;
+}
+
+.planet-table td img {
+  width: 20px;
+  padding: 0px;
+  margin-left: 10px;
+}
+
+.planet-table #earth-compare {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
 
 .planet-button {
   height: 40px;
