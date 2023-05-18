@@ -1,14 +1,14 @@
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import iconImage from '../img/placeholder.png'
 import { useHistory } from 'react-router-dom'
 import { LocationContext } from '../context/LocationContext'
+import Location from './Location'
 
 const Map = () => {
 
-  const [showCoord, setShowCoord] = useState(false)
   const customIcon = new Icon({
     iconUrl: iconImage,
     iconSize: [38, 38]
@@ -18,7 +18,6 @@ const Map = () => {
 
   const handleCLick = (event) => {
     setLocation([event.latlng.lat, event.latlng.lng])
-    setShowCoord(true)
   }
 
   const handleSubmit = (event) => {
@@ -44,7 +43,6 @@ const Map = () => {
     }).then(data => {
       console.log('fetch klart: ', data)
     })
-    setShowCoord(true)
     history.push('/overview')
 
   }
@@ -79,11 +77,7 @@ const Map = () => {
       </MapContainer>
       <div className="map-footer">
         <button id="map-button" onClick={handleSubmit}>Set location</button>
-        {showCoord && 
-          ( <div className="position-coord">
-            <p>latitude: {location[0].toFixed(4)}</ p> 
-            <p>longitude: {location[1].toFixed(4)} </p>
-          </div> )}
+        <Location />
       </div>
       
 

@@ -8,7 +8,7 @@ const Venus = () => {
 
   const [showInfo, setShowInfo] = useState(false)
   const {location} = useContext(LocationContext)
-  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets/mercury', { lat: location[0], lng: location[1] })
+  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets/venus', { lat: location[0], lng: location[1] })
 
   const handleClick = (event) => {
     setShowInfo(!showInfo)

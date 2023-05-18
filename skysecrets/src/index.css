@@ -24,6 +24,10 @@ code {
   align-items: center; /* vertically center */
 }
 
+.App {
+  width: 350px;
+}
+
 .hidden {
   display: none;
 }
@@ -50,12 +54,15 @@ p {
 h1, h2 {
   color: white;
   padding: 10px;
-  border: solid 1px white;
   border-radius: 5px;
   width: max-content;
   height: max-content;
   text-align: center;
   margin: 10px 10px 10px auto;
+}
+
+h1 {
+  text-decoration: underline;
 }
 
 h3 {
@@ -66,7 +73,8 @@ h3 {
 /* menu */
 
 .menu-head img {
-  width: 50px;
+  width: 40px;
+  margin-bottom: 3px;
 }
 
 .menu-head {
@@ -82,7 +90,7 @@ h3 {
 
 .drop-down-menu {
   position: absolute;
-  width: 120px;
+  width: 200px;
   border-radius: 5px;
   right: 0px;
   margin-top: 10px;
@@ -96,9 +104,14 @@ h3 {
   border: solid 1px rgb(47, 45, 70);
 }
 
+.drop-down-item:hover {
+  background-color: rgb(59, 55, 106);;
+}
+
 .drop-down-item a {
   text-decoration: none;
   color: white;
+  width: 100%
 }
 
 .title-row {
@@ -321,13 +334,14 @@ button {
   margin: 10px;
 }
 
-/* locatio */
+/* location */
 .location-container {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;
   justify-content: center; /* horizontally center */
   align-items: center; /* vertically center */
+  margin-right: 10px;
 }
 
 .location-container img {
@@ -442,7 +456,7 @@ button {
 }
 
 .under-horizon {
-  opacity: 30%;
+  opacity: 20%;
 }
 
 

@@ -1,7 +1,8 @@
-import { useContext } from "react"
-import { LocationContext } from "../context/LocationContext"
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { LocationContext } from '../context/LocationContext'
 import useFetch from '../functions/useFetch'
-import useFetchPost from "../functions/useFetchPost";
+import useFetchPost from '../functions/useFetchPost'
 import { useState } from 'react'
 
 const Aurora = () => {
@@ -22,14 +23,12 @@ const Aurora = () => {
       {postError && (<p>An error occured: { postError }</p>)}
       {!postIsPending && postData && (
         <div>
-          <p>Chances for aurora at</p>
-          <p>lat: {location[0].toFixed(4)}, lng: {location[1].toFixed(4)}</p>
+          <p>Chances for aurora at current position</p>
         </div>
       )} 
-      {!postIsPending && !postData && (
+      {!postIsPending && !postData && !postError &&(
         <div>
-          <p>Very low chances for aurora at</p>
-          <p>lat: {location[0].toFixed(4)}, lng: {location[1].toFixed(4)}</p>
+          <p>Very low chances for aurora at current position</p>
         </div>
       )}
       </div>
@@ -52,6 +51,7 @@ const Aurora = () => {
           <div className="planetary-index">
             <p>Planetary index</p>
             <p>Kp: {data.Kp.index}</p>
+            <Link to='/index'>More on planetary index</Link>
           </div>
           <button className="hide-aurora-info" onClick={handleClick}>Hide info</button>
         </div>

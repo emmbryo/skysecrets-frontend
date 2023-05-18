@@ -16,21 +16,18 @@ const Sun = () => {
   return ( 
     <div className="sun-container">
       {postError && <div className="error-message">{ postError }</div>}
-      { postIsPending && (<p>Loading...</p>)}
-      { !postIsPending && times && (
+      {postIsPending && (<p>Loading...</p>)}
+      {!postIsPending && times && (
         <div id="sun">
             <div className="sun-image">
               <img src="https://sdo.gsfc.nasa.gov/assets/img/latest/latest_512_0193.jpg" alt="current sun"/>
             </div>
-            <p>Sunrise: {times.sunrise}</p>
-            <p>Sunset: {times.sunset}</p>
+            <div>
+              <p>&uarr; {postData.sunrise}</p>
+              <p>&darr; {postData.sunset}</p>
+            </div>
         </div>
         )}
-        <div>
-          {location && (<p>Latitude: { location[0].toFixed(4)}</p>)}
-          {location && (<p>Longitude: { location[1].toFixed(4)}</p>)}
-        </div>
-      
     </div>
    );
 }

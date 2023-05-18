@@ -21,16 +21,18 @@ function App() {
   return (
     <Router>
       <div className="App" data-testid="app-test">
-      <Header />
+        <LocationContext.Provider value={{location, setLocation}}>
+          <Header />
+        </LocationContext.Provider>
       <div className="content">
         <Switch>
-          <Route exact path="/">
-            <Start />
-          </Route>
           <Route exact path="/image">
             <Image />
           </Route>
           <LocationContext.Provider value={{location, setLocation}}>
+          <Route exact path="/">
+            <Start />
+          </Route>
             <Route path="/aurora">
               <Aurora /> 
             </Route>

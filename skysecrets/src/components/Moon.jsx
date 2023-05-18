@@ -58,13 +58,14 @@ const Moon = () => {
           </div>
         </div>
       </div> )}
-      <p>Moon Phase: { phaseText }</p>
+      <p>Phase: { phaseText }</p>
       <p>Illumination: { phase }%</p>
       {postIsPending && (<p>Loading...</p>)}
-      {!postIsPending && (
+      {!postIsPending && postData && (
         <div>
-          <p>Moonrise: {postData.moonrise}</p>
-          <p>Moonset: {postData.moonset}</p>
+          <div>
+            <p>&uarr; {postData.moonrise}&nbsp;&nbsp;&nbsp;{postData.moonset} &darr;</p>
+          </div>
         </div>)}
       {/* <p>latitude: { location[0].toFixed(4) }</p>
       <p>longitude: { location[1].toFixed(4) }</p> */}
