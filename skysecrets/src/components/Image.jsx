@@ -41,7 +41,7 @@ const Image = () => {
         </div>
       )}
       { data.copyright && (
-        <p>copyright: { data.copyright }</p>
+        <p>&copy; { data.copyright }</p>
       )}
       { explanation && (
         <p id="image-explanation">{ explanation }</p>

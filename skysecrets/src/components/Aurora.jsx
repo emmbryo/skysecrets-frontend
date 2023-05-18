@@ -38,21 +38,23 @@ const Aurora = () => {
       {error && (<p>An error occured: { error }</p>)}
       {!isPending && data && show && (
         <div className="aurora-data">
-          <div className="solarwind-data">
+          <div className="solar-magnetic-container">
+            <div className="solarwind-data">
             <p>Solarwind</p>
-            <p>Speed: {data.solarWind.speed}</p>
-            <p>Density: {data.solarWind.density}</p>
+            <p>Speed: {data.solarWind.speed} km/s</p>
+            <p>Density: {data.solarWind.density} cm<sup>-3</sup></p>
           </div>
           <div className="magnetic-data">
             <p>Magnetic field</p>
-            <p>Bt: {data.magneticField.power}</p>
-            <p>Bz: {data.magneticField.zComponent}</p>
+            <p>Bt: {data.magneticField.power} nT</p>
+            <p>Bz: {data.magneticField.zComponent} nT</p>
+          </div>
           </div>
           <div className="planetary-index">
-            <p>Planetary index</p>
-            <p>Kp: {data.Kp.index}</p>
-            <Link to='/index'>More on planetary index</Link>
+            <p>Planetary index: {data.Kp.index}</p>
+            <Link to='/index' id="index-link">&rarr;More on planetary index</Link>
           </div>
+          <p></p>
           <button className="hide-aurora-info" onClick={handleClick}>Hide info</button>
         </div>
       )}

@@ -45,7 +45,7 @@ const Saturn = () => {
               <tbody>
                 <tr>
                   <td>Orbital period</td>
-                  <td>29.5 y</td>
+                  <td>29.5 yr</td>
                   <td className="earth-compare">
                     29.5
                     <img src={earth} alt="earth" />

@@ -204,7 +204,6 @@ h3 {
   align-items: center; /* vertically center */
 }
 
-
 .planet-button {
   height: 40px;
   width: 100px;
@@ -214,7 +213,6 @@ h3 {
   color: white;
   font-size: 15px;
 }
-
 
 /* start view */
 .start-container a {
@@ -342,6 +340,46 @@ button {
   width: 300px;
 }
 
+.solar-magnetic-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.solar-magnetic-container div {
+  margin-top: 20px;
+  border: solid 1px white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.aurora-data {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
+.aurora-data p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.aurora-data button {
+  width: max-content;
+}
+
+.planetary-index {
+  border: solid 1px white;
+  border-radius: 5px;
+  padding: 5px;
+}
+#index-link {
+  color: white;
+  text-decoration: none;
+}
+
 /* map */
 .leaflet-container {
   width: 300px;
@@ -383,10 +421,15 @@ button {
   margin: 0px;
 }
 
-/* k index
-.kindex-container {
+/* k index */
+.kindex-container  {
+  text-align: center;
+  color: black;
+} 
 
-} */
+.kindex-container td p {
+  color: black;
+}
 
 .kindex-container table {
   font-family: Arial, Helvetica, sans-serif;
@@ -396,6 +439,14 @@ button {
 .kindex-container td {
   padding: 3px;
   border-radius: 5px;
+  color: black;
+  align-content: center;
+  justify-content: center;
+}
+
+.kindex-container img {
+  width: 35px;
+  margin: 10px;
 }
 
 #kindex-green {
