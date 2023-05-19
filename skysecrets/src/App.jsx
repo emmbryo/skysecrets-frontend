@@ -5,7 +5,6 @@ import Image from "./components/Image"
 import Map from "./components/Map"
 import Start from "./components/Start"
 import Planets from "./components/Planets/Planets"
-import Sun from "./components/Sun"
 import Overview from "./components/Overview/Overview"
 import Kindex from "./components/Kindex"
 import Location from "./components/Location"
@@ -35,9 +34,6 @@ function App() {
           </Route>
             <Route path="/aurora">
               <Aurora /> 
-            </Route>
-            <Route path="/sun">
-              <Sun/>
             </Route>
             <Route path="/map">
               <Map />

@@ -1,5 +1,5 @@
 import info from '../img/information.png'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const Kindex = () => {
 
@@ -11,6 +11,7 @@ const Kindex = () => {
     useRef(null),
     useRef(null)
   ]
+  const [showInfo, setShowInfo] = useState(false)
 
   const handleClick = (index) => {
     if (infoElements[index].current) {
@@ -20,11 +21,27 @@ const Kindex = () => {
     }
   }
 
+  const handleInfo = () => {
+    setShowInfo(!showInfo)
+  }
 
   return ( 
     <div className="kindex-container">
       <h3>Planetary Kp-index</h3>
-      <p>The planetary Kp-index is a globally averaged measure of goemagnetic activity. It is derived by calculating a weighted average of K-indices from a network of geomagnetic observatories.</p>
+      <p>The Kp Index is a globally averaged measure on the disturbances of earth's magnetic field. It is described by a scale of 0-9 with 1 being calm and 5 or more indication a geomagnetic storm. Simplified: The higher the number, the higher the chances for aurora.</p>
+      {!showInfo && (
+        <button onClick={handleInfo}>More info</button>
+      )}
+      {showInfo && (
+        <div className="extra-info">
+          <p>The Kp Index is derived from the observation of magnetic field variations at multiple magnetometer stations around the world. It is based on the maximum amplitude of disturbances recorded at each station during a specific time period, typically every 3 hours.</p>
+          <p>Solar activity, particularly geomagnetic storms and coronal mass ejections (CMEs) from the Sun, can significantly impact the Kp Index. When a strong solar event occurs, such as a CME interacting with Earth's magnetosphere, it can cause geomagnetic disturbances and increase the Kp Index values.</p>
+          <p>Higher Kp Index values, usually ranging from 0 to 9, indicate a higher level of geomagnetic activity. Values of 5 or above are generally associated with increased chances of aurora sightings at higher latitudes.</p>
+          <p>Therefore, while the Kp Index is not a direct measure of solar activity, it serves as an indicator of the resulting geomagnetic disturbances caused by solar activity. It is commonly used by researchers, scientists, and enthusiasts to assess the potential for aurora sightings and monitor the level of geomagnetic activity.</p>
+          <button onClick={handleInfo}>Hide info</button>
+        </div>
+      )}
+      
       <table>
         <tbody>
           <tr id="kindex-green">

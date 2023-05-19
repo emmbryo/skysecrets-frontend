@@ -27,10 +27,9 @@ const clickLink = (event) => {
         <div className="drop-down-item" id="/" onClick={clickLink}>Start</div>
         <div className="drop-down-item" id="/map" onClick={clickLink}>Location</div>
         <div className="drop-down-item" id="/overview" onClick={clickLink}>Overview</div>
-        <div className="drop-down-item" id="/image" onClick={clickLink}>Image</div>
+        <div className="drop-down-item" id="/image" onClick={clickLink}>Image of the day</div>
         <div className="drop-down-item" id="/aurora" onClick={clickLink}>Aurora</div>
         <div className="drop-down-item" id="/moon" onClick={clickLink}>Moon</div>
-        <div className="drop-down-item" id="/sun" onClick={clickLink}>Sun</div>
         <div className="drop-down-item" id="/planets" onClick={clickLink}>Planets</div>
         <div className="drop-down-item" id="/index" onClick={clickLink}>K-index</div>
       </div>

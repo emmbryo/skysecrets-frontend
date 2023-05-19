@@ -33,11 +33,6 @@ const Start = () => {
         </Link>
       </button>
       <button className="start-button">
-        <Link to="/sun">
-          <p>Sun</p>
-        </Link>
-      </button>
-      <button className="start-button">
         <Link to="/planets">
           <p>Planets</p>
         </Link>

@@ -18,6 +18,11 @@ const PlanetsOverview = () => {
           {postError && (
             <div>An error occurred: {postError}</div>
           )}
+          {postIsPending && (
+            <div>
+              Loading...
+            </div>
+          )}
           {!postIsPending && postData && (
             <div className="planets-overview-images">
               <div className="round-planets">
