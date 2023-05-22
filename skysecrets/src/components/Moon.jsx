@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react"
-import useFetch from "../functions/useFetch"
-import useFetchPost from "../functions/useFetchPost"
-import { useContext } from "react"
-import { LocationContext } from "../context/LocationContext"
+import { useState, useEffect, useContext } from 'react'
+import useFetch from '../functions/useFetch'
+import useFetchPost from '../functions/useFetchPost'
+import { LocationContext } from '../context/LocationContext'
 
+/**
+ * Moon component.
+ *
+ * @returns {object} react component.
+ */
 const Moon = () => {
-
   const [phase, setPhase] = useState(0)
   const [phaseText, setPhaseText] = useState('Waxing Crescent')
   const [moonClass, setMoonClass] = useState('moon-container-growing')
@@ -35,29 +38,29 @@ const Moon = () => {
     widthRight = 0
     widthLeft = (2 * phase) - 100
   }
-  
-  return ( 
-    <div id="the-moon"> 
+
+  return (
+    <div id="the-moon">
       {error && <div className="error-message">{ error }</div>}
       { isPending && (<p>Loading...</p>)}
       { !isPending && (<div className={ moonClass }>
-        <div id="circle-wrap" > 
-          <div id="moon">  
+        <div id="circle-wrap" >
+          <div id="moon">
           </div>
-          <div id="cover" 
-            style={{ 
-              left: `${phase}px`, 
+          <div id="cover"
+            style={{
+              left: `${phase}px`,
               width: `${widthRight}px`
-            }}>  
+            }}>
           </div>
-          <div id="cover-right" 
-            style={{ 
-              right: `${100 - phase}px`, 
+          <div id="cover-right"
+            style={{
+              right: `${100 - phase}px`,
               width: `${widthLeft}px`
-            }}>  
+            }}>
           </div>
         </div>
-      </div> )}
+      </div>)}
       <p>Phase: { phaseText }</p>
       <p>Illumination: { phase }%</p>
       {postIsPending && (<p>Loading...</p>)}
@@ -67,10 +70,7 @@ const Moon = () => {
             <p>&uarr; {postData.moonrise}&nbsp;&nbsp;&nbsp;{postData.moonset} &darr;</p>
           </div>
         </div>)}
-      {/* <p>latitude: { location[0].toFixed(4) }</p>
-      <p>longitude: { location[1].toFixed(4) }</p> */}
-    </div>  
-   );
+    </div>
+  )
 }
- 
-export default Moon;
+export default Moon

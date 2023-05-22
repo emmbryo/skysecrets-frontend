@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'
 
+/**
+ * Custom hook for posting with fetch.
+ *
+ * @param {string} url where to fetch.
+ * @param {object} requestData body of request.
+ * @returns {object} data, ispending, error.
+ */
 const useFetchPost = (url, requestData) => {
-
   const [postData, setPostData] = useState(null)
   const [postIsPending, setPostIsPending] = useState(true)
   const [postError, setPostError] = useState(null)
@@ -15,7 +21,7 @@ const useFetchPost = (url, requestData) => {
       body: JSON.stringify(requestData)
     })
       .then(res => {
-        if(!res.ok) {
+        if (!res.ok) {
           throw Error('Something went wrong with the fetch.')
         }
         return res.json()
@@ -29,7 +35,8 @@ const useFetchPost = (url, requestData) => {
         setPostIsPending(false)
         setPostError(err.message)
       })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
+  // react-hooks/exhaustive-deps
   }, [])
 
   return { postData, postIsPending, postError }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Mercury from './Mercury'
 import Venus from './Venus'
 import Mars from './Mars'
@@ -7,6 +8,11 @@ import Sidebar from './Sidebar'
 import { useState } from 'react'
 import PlanetStartView from './PlanetStartView'
 
+/**
+ * Planets component.
+ *
+ * @returns {object} react component.
+ */
 const Planets = () => {
   const [ifMercury, setIfMercury] = useState(false)
   const [ifVenus, setIfVenus] = useState(false)
@@ -15,6 +21,9 @@ const Planets = () => {
   const [ifSaturn, setIfSaturn] = useState(false)
   const [ifOverview, setIfOverview] = useState(true)
 
+  /**
+   * Sets all planets view state to false.
+   */
   const allToFalse = () => {
     setIfJupiter(false)
     setIfMars(false)
@@ -24,23 +33,28 @@ const Planets = () => {
     setIfOverview(false)
   }
 
+  /**
+   * Sets true to viewing the chosen planet.
+   *
+   * @param {object} event the click event.
+   */
   const handleClick = (event) => {
     console.log(event.target.alt)
     allToFalse()
     switch (event.target.alt) {
-      case "mercury":
+      case 'mercury':
         setIfMercury(true)
         break
-      case "venus":
+      case 'venus':
         setIfVenus(true)
         break
-      case "mars":
+      case 'mars':
         setIfMars(true)
         break
-      case "jupiter":
+      case 'jupiter':
         setIfJupiter(true)
         break
-      case "saturn":
+      case 'saturn':
         setIfSaturn(true)
         break
       default:
@@ -49,7 +63,7 @@ const Planets = () => {
     }
   }
 
-  return ( 
+  return (
     <div className="planets-container">
       <div className="planet-side-bar" onClick={handleClick}>
         <Sidebar />
@@ -61,9 +75,8 @@ const Planets = () => {
         {ifMars && (<Mars />)}
         {ifJupiter && (<Jupiter />)}
         {ifSaturn && (<Saturn />)}
-      </div>    
+      </div>
     </div>
-   );
+  )
 }
- 
-export default Planets;
+export default Planets

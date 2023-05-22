@@ -1,21 +1,27 @@
 import saturn from './img/saturn.png'
-import earth from'./img/earth.png'
-import { useState } from 'react'
+import earth from './img/earth.png'
+import { useState, useContext } from 'react'
 import useFetchPost from '../../functions/useFetchPost'
-import { useContext } from "react"
-import { LocationContext } from "../../context/LocationContext"
+import { LocationContext } from '../../context/LocationContext'
 
+/**
+ * Saturn component.
+ *
+ * @returns {object} react component.
+ */
 const Saturn = () => {
-
   const [showInfo, setShowInfo] = useState(false)
-  const {location} = useContext(LocationContext)
+  const { location } = useContext(LocationContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets/saturn', { lat: location[0], lng: location[1] })
 
-  const handleClick = (event) => {
+  /**
+   * Toggles showInfo.
+   */
+  const handleClick = () => {
     setShowInfo(!showInfo)
   }
 
-  return ( 
+  return (
     <div className="saturn-container">
       <h3>Saturn</h3>
       {postIsPending && (
@@ -79,11 +85,9 @@ const Saturn = () => {
             </table>
             <button className="planet-button" onClick={handleClick}>Hide info</button>
           </div>
-          
         )}
       </div>
     </div>
-   );
+  )
 }
- 
-export default Saturn;
+export default Saturn

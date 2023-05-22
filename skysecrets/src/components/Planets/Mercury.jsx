@@ -1,21 +1,27 @@
-import mercury from "./img/mercury.png"
+import mercury from './img/mercury.png'
 import earth from './img/earth.png'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import useFetchPost from '../../functions/useFetchPost'
-import { useContext } from "react"
-import { LocationContext } from "../../context/LocationContext"
+import { LocationContext } from '../../context/LocationContext'
 
+/**
+ * Mercury component.
+ *
+ * @returns {object} react component.
+ */
 const Mercury = () => {
-
   const [showInfo, setShowInfo] = useState(false)
-  const {location} = useContext(LocationContext)
+  const { location } = useContext(LocationContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets/mercury', { lat: location[0], lng: location[1] })
 
-  const handleClick = (event) => {
+  /**
+   * Toggles showInfo.
+   */
+  const handleClick = () => {
     setShowInfo(!showInfo)
   }
 
-  return ( 
+  return (
     <div className="mercury-container">
       <h3>Mercury</h3>
       {postIsPending && (
@@ -35,10 +41,9 @@ const Mercury = () => {
         </div>
       )}
       <div className="planet" id="mercury">
-       <img src={mercury} alt="mercury" /> 
+       <img src={mercury} alt="mercury" />
        {!showInfo && (
-          <button className="planet-button" onClick={handleClick}>Show info</button>
-        )}
+          <button className="planet-button" onClick={handleClick}>Show info</button>)}
         {showInfo && (
           <div className="show-planet-info">
             <table className="planet-table">
@@ -79,11 +84,9 @@ const Mercury = () => {
             </table>
             <button className="planet-button" onClick={handleClick}>Hide info</button>
           </div>
-          
         )}
       </div>
     </div>
-   );
+  )
 }
- 
-export default Mercury;
+export default Mercury

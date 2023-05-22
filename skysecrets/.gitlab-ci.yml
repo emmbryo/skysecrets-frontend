@@ -1,0 +1,12 @@
+image: node:18.8.0
+
+stages:
+  - lint
+
+run_code_linting:
+  stage: lint
+  before_script:
+    - npm install @lnu/eslint-config
+  script:
+    - echo "Code Linting... "
+    - npm run lint

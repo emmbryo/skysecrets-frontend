@@ -1,8 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom'
 import Location from './Location'
 
+/**
+ * Start component.
+ *
+ * @returns {object} react component.
+ */
 const Start = () => {
-  return ( 
+  return (
     <div className="start-container">
       <div className="text">
         <p>Welcome!</p>
@@ -43,7 +49,7 @@ const Start = () => {
         </Link>
       </button>
     </div>
-   );
+  )
 }
- 
-export default Start;
+
+export default Start

@@ -1,11 +1,15 @@
-import { useContext } from "react"
-import { LocationContext } from "../../context/LocationContext"
+import { useContext } from 'react'
+import { LocationContext } from '../../context/LocationContext'
 
+/**
+ * AuroraOverview Component.
+ *
+ * @returns {object} react component.
+ */
 const AuroraOverview = () => {
-
   const { location } = useContext(LocationContext)
 
-  return ( 
+  return (
     <div className="aurora-overview">
       <div>
         <p>Aurora oval:</p>
@@ -13,7 +17,7 @@ const AuroraOverview = () => {
       {location[0] >= 0 && (<img src="https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg" alt="aurora" />)}
       {location[0] < 0 && (<img src="https://services.swpc.noaa.gov/images/aurora-forecast-southern-hemisphere.jpg" alt="aurora" />)}
     </div>
-   );
+  )
 }
- 
-export default AuroraOverview;
+
+export default AuroraOverview

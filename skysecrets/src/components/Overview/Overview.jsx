@@ -1,9 +1,15 @@
-import PlanetsOverview from "./PlanetsOverview"
-import AuroraOverview from "./AuroraOverview"
-import SunAndMoon from "./SunAndMoon"
+/* eslint-disable no-unused-vars */
+import PlanetsOverview from './PlanetsOverview'
+import AuroraOverview from './AuroraOverview'
+import SunAndMoon from './SunAndMoon'
 
+/**
+ * Overview component.
+ *
+ * @returns {object} react component.
+ */
 const Overview = () => {
-  return ( 
+  return (
     <div className="overview-container" data-testid="overview">
       <div className="sun-and-moon">
         <SunAndMoon />
@@ -15,7 +21,6 @@ const Overview = () => {
         <AuroraOverview />
       </div>
     </div>
-   );
+  )
 }
- 
-export default Overview;
+export default Overview

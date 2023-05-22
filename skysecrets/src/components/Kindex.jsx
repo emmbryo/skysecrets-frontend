@@ -1,8 +1,12 @@
 import info from '../img/information.png'
 import { useRef, useState } from 'react'
 
+/**
+ * K index component.
+ *
+ * @returns {object} react component.
+ */
 const Kindex = () => {
-
   const infoElements = [
     useRef(null),
     useRef(null),
@@ -13,6 +17,11 @@ const Kindex = () => {
   ]
   const [showInfo, setShowInfo] = useState(false)
 
+  /**
+   * Toggles the class of the element.
+   *
+   * @param {number} index index to reference the useRef.
+   */
   const handleClick = (index) => {
     if (infoElements[index].current) {
       const currentClassName = infoElements[index].current.className
@@ -21,13 +30,16 @@ const Kindex = () => {
     }
   }
 
+  /**
+   * Toggles showInfo.
+   */
   const handleInfo = () => {
     setShowInfo(!showInfo)
   }
 
-  return ( 
+  return (
     <div className="kindex-container">
-      <h3>Planetary Kp-index</h3>
+      <h3>Kp-index</h3>
       <p>The Kp Index is a globally averaged measure on the disturbances of earth's magnetic field. It is described by a scale of 0-9 with 1 being calm and 5 or more indication a geomagnetic storm. Simplified: The higher the number, the higher the chances for aurora.</p>
       {!showInfo && (
         <button onClick={handleInfo}>More info</button>
@@ -41,7 +53,6 @@ const Kindex = () => {
           <button onClick={handleInfo}>Hide info</button>
         </div>
       )}
-      
       <table>
         <tbody>
           <tr id="kindex-green">
@@ -52,7 +63,7 @@ const Kindex = () => {
               <div>
                 <p ref={infoElements[0]} className="hidden">No effect on devices or people</p>
                 <img src={info} alt="info-4" onClick={() => handleClick(0)}/>
-              </div> 
+              </div>
             </td>
           </tr>
           <tr id="kindex-yellow">
@@ -63,10 +74,10 @@ const Kindex = () => {
               <div>
                 <p ref={infoElements[1]} className="hidden">Weak fluctuations in the electrical grid, minor effects on the operation of space satellites, as well as on the migration of animals are quite possible.</p>
                 <img src={info} alt="info-5" onClick={() => handleClick(1)}/>
-              </div> 
+              </div>
             </td>
           </tr>
-          <tr id="kindex-dark-yellow"> 
+          <tr id="kindex-dark-yellow">
             <td>Dark yellow</td>
             <td>Moderate geomagnetic storm</td>
             <td><b>Kp-Index 6/G2</b></td>
@@ -74,7 +85,7 @@ const Kindex = () => {
               <div>
                 <p ref={infoElements[2]} className="hidden">Power systems located at high latitudes can experience emergency situations. Prolonged geomagnetic storms can damage transformers. HF radio signas may weaken.</p>
                 <img src={info} alt="info-6" onClick={() => handleClick(2)}/>
-              </div> 
+              </div>
             </td>
           </tr>
           <tr id="kindex-orange">
@@ -85,7 +96,7 @@ const Kindex = () => {
               <div>
                 <p ref={infoElements[3]} className="hidden">False alarms may be triggered on some protective electronic devices. Correction of satellite orientation and navigation in outer space may be required.</p>
                 <img src={info} alt="info-6" onClick={() => handleClick(3)}/>
-              </div> 
+              </div>
             </td>
           </tr>
           <tr id="kindex-red">
@@ -96,7 +107,7 @@ const Kindex = () => {
               <div>
                 <p ref={infoElements[4]} className="hidden">There may be widespread problems with power grid voltages. Satellite nagivation may worsen for serveral hours, anf LF radio navigation may be disrupted.</p>
                 <img src={info} alt="info-6" onClick={() => handleClick(4)}/>
-              </div> 
+              </div>
             </td>
           </tr>
           <tr id="kindex-dark-red">
@@ -107,14 +118,14 @@ const Kindex = () => {
               <div>
                 <p ref={infoElements[5]} className="hidden">Power systems may experience transformer damage and a complete collapse. HF radio comminications may not be possible. Satellite navigation may be disrupted.</p>
                 <img src={info} alt="info-6" onClick={() => handleClick(5)}/>
-              </div> 
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
       <p>&copy;</p>
-    </div> 
-  );
+    </div>
+  )
 }
- 
-export default Kindex;
+
+export default Kindex

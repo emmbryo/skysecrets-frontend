@@ -1,24 +1,33 @@
-import useFetch from '../functions/useFetch';
+import useFetch from '../functions/useFetch'
 import { useState } from 'react'
 import defaultImage from '../img/default.jpg'
 
+/**
+ * Image component.
+ *
+ * @returns {object} react component.
+ */
 const Image = () => {
-
-  const {data, isPending, error} = useFetch('http://localhost:8080/api/v1/image')
+  const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/image')
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
 
+  /**
+   * Shows description.
+   */
   function showDescription () {
     setExplanation(data.explanation)
     setDescriptionShown(true)
   }
+  /**
+   * Hides description.
+   */
   function hideDescription () {
     setExplanation(null)
     setDescriptionShown(false)
-
   }
 
-  return ( 
+  return (
     <div className="space-image-container">
       { isPending && (
         <p>Loading...</p>
@@ -53,7 +62,6 @@ const Image = () => {
         <button onClick={showDescription}>Show description</button>
       )}
     </div>
-   );
+  )
 }
- 
-export default Image;
+export default Image

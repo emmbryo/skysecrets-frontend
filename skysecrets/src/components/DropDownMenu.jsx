@@ -2,23 +2,36 @@ import menu from '../img/menu-white.png'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 
+/**
+ * DropDownMenu component.
+ *
+ * @returns {object} react component.
+ */
 const DropDownMenu = () => {
-const [shown, setShown] = useState('drop-down-menu hidden')
-const history = useHistory();
+  const [shown, setShown] = useState('drop-down-menu hidden')
+  const history = useHistory()
 
-const menuClick = () => {
-  if (shown.split(' ').length > 1) {
-    setShown('drop-down-menu')
-  } else {
-    setShown('drop-down-menu hidden')
+  /**
+   * Toggles the menu.
+   */
+  const menuClick = () => {
+    if (shown.split(' ').length > 1) {
+      setShown('drop-down-menu')
+    } else {
+      setShown('drop-down-menu hidden')
+    }
   }
-}
 
-const clickLink = (event) => {
-  history.push(`${event.target.id}`)
-}
+  /**
+   * Links to clicked link.
+   *
+   * @param {object} event the triggering event.
+   */
+  const clickLink = (event) => {
+    history.push(`${event.target.id}`)
+  }
 
-  return ( 
+  return (
     <div className="menu-wrapper">
       <div className="menu-head">
         <img src={menu} alt="menu" onClick={menuClick}/>
@@ -34,7 +47,7 @@ const clickLink = (event) => {
         <div className="drop-down-item" id="/index" onClick={clickLink}>K-index</div>
       </div>
     </div>
-   );
+  )
 }
- 
-export default DropDownMenu;
+
+export default DropDownMenu

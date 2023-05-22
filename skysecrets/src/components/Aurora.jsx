@@ -1,22 +1,29 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+// eslint-disable-next-line no-unused-vars
 import { Link } from 'react-router-dom'
 import { LocationContext } from '../context/LocationContext'
 import useFetch from '../functions/useFetch'
 import useFetchPost from '../functions/useFetchPost'
-import { useState } from 'react'
 
+/**
+ * Aurora component.
+ *
+ * @returns {object} react component.
+ */
 const Aurora = () => {
-
-  const {location} = useContext(LocationContext)
-  const {data , isPending, error} = useFetch('http://localhost:8080/api/v1/aurora')
+  const { location } = useContext(LocationContext)
+  const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/aurora')
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/aurora/chance', { lat: location[0], lng: location[1] })
   const [show, setShow] = useState(false)
 
-  const handleClick = (event) => {
+  /**
+   * Toggles show.
+   */
+  const handleClick = () => {
     setShow(!show)
   }
 
-  return ( 
+  return (
     <div className="aurora">
       <div className="aurora-probability">
       {postIsPending && (<p>Loading...</p>)}
@@ -25,8 +32,8 @@ const Aurora = () => {
         <div>
           <p>Chances for aurora at current position</p>
         </div>
-      )} 
-      {!postIsPending && !postData && !postError &&(
+      )}
+      {!postIsPending && !postData && !postError && (
         <div>
           <p>Very low chances for aurora at current position</p>
         </div>
@@ -60,7 +67,7 @@ const Aurora = () => {
       )}
       {!show && (<button className="show-aurora-info" onClick={handleClick}>Show info</button>)}
     </div>
-   );
+  )
 }
- 
-export default Aurora;
+
+export default Aurora

@@ -1,21 +1,27 @@
 import mars from './img/mars.png'
 import earth from './img/earth.png'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import useFetchPost from '../../functions/useFetchPost'
-import { useContext } from "react"
-import { LocationContext } from "../../context/LocationContext"
+import { LocationContext } from '../../context/LocationContext'
 
+/**
+ * Mars component.
+ *
+ * @returns {object} react component.
+ */
 const Mars = () => {
-
   const [showInfo, setShowInfo] = useState(false)
-  const {location} = useContext(LocationContext)
+  const { location } = useContext(LocationContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets/mars', { lat: location[0], lng: location[1] })
 
-  const handleClick = (event) => {
+  /**
+   * Toggles showInfo.
+   */
+  const handleClick = () => {
     setShowInfo(!showInfo)
   }
 
-  return ( 
+  return (
     <div className="mars-container">
       <h3>Mars</h3>
       {postIsPending && (
@@ -79,11 +85,10 @@ const Mars = () => {
             </table>
             <button className="planet-button" onClick={handleClick}>Hide info</button>
           </div>
-          
         )}
-      </div> 
+      </div>
     </div>
-   );
+  )
 }
- 
-export default Mars;
+
+export default Mars
