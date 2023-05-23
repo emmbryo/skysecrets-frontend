@@ -9,6 +9,7 @@ import Planets from './components/Planets/Planets'
 import Overview from './components/Overview/Overview'
 import Kindex from './components/Kindex'
 import Location from './components/Location'
+import User from './components/User/User'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { LocationContext } from './context/LocationContext'
@@ -37,6 +38,9 @@ function App () {
           <LocationContext.Provider value={{ location, setLocation }}>
           <Route exact path="/">
             <Start />
+          </Route>
+          <Route exact path="/user">
+            <User />
           </Route>
             <Route path="/aurora">
               <Aurora />

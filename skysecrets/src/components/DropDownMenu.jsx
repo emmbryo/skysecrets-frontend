@@ -38,6 +38,7 @@ const DropDownMenu = () => {
       </div>
       <div className={shown} onClick={menuClick}>
         <div className="drop-down-item" id="/" onClick={clickLink}>Start</div>
+        <div className="drop-down-item" id="/user" onClick={clickLink}>User</div>
         <div className="drop-down-item" id="/map" onClick={clickLink}>Location</div>
         <div className="drop-down-item" id="/overview" onClick={clickLink}>Overview</div>
         <div className="drop-down-item" id="/image" onClick={clickLink}>Image of the day</div>
