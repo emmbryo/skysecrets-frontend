@@ -44,7 +44,9 @@ const Map = () => {
         lng: location[1]
       }
     }
-    fetch('http://localhost:8080/api/v1/settings', {
+
+    // använd useFetchPost-hook istället
+    fetch('http://localhost:8080/api/v1/account', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -13,7 +13,7 @@ import useFetchPost from '../functions/useFetchPost'
 const Aurora = () => {
   const { location } = useContext(LocationContext)
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/aurora')
-  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/aurora/chance', { lat: location[0], lng: location[1] })
+  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/aurora/analysis', { lat: location[0], lng: location[1] })
   const [show, setShow] = useState(false)
 
   /**
@@ -28,14 +28,21 @@ const Aurora = () => {
       <div className="aurora-probability">
       {postIsPending && (<p>Loading...</p>)}
       {postError && (<p>An error occured: { postError }</p>)}
-      {!postIsPending && postData && (
+      {!postIsPending && postData.chance && (
         <div>
-          <p>Chances for aurora at current position</p>
+          <p>Chances for aurora at current position!</p>
         </div>
       )}
-      {!postIsPending && !postData && !postError && (
+      {!postIsPending && !postData.chance && !postError && (
         <div>
-          <p>Very low chances for aurora at current position</p>
+          <p>Very low chances for aurora at current position, because:</p>
+          <ul>
+            {postData.reasons.map(reason => {
+              return (
+                <li key={reason.id}>{reason.text}</li>
+              )
+            })}
+          </ul>
         </div>
       )}
       </div>
