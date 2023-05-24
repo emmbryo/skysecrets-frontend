@@ -4,9 +4,10 @@ import { useState } from 'react'
 /**
  * Login component.
  *
+ * @param {object} props - ...
  * @returns {object} react component
  */
-const Login = () => {
+const Login = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   /**
@@ -20,15 +21,17 @@ const Login = () => {
   }
 
   return (
-    <div className="login-container">
+    <div className="user-form-container">
       <h2>Welcome to SkySecrets!</h2>
       <p>Please log in</p>
-      <form onSubmit={handleSubmit} className="login-form">
-        <input type="text" placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)}/>
-        <input type="text" placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+      <form onSubmit={handleSubmit} className="user-form">
+        <label htmlFor="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)}/>
+        <label htmlFor="password">Password:</label>
+        <input type="text" id="password" name="password" placeholder="***********" value={password} onChange={(event) => setPassword(event.target.value)}/>
         <input type="submit" value="Login" />
       </form>
-      <button>Don't have an account? Register here.</button>
+      <button className="user-form-button" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
     </div>
   )
 }

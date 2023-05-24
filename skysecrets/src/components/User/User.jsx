@@ -9,16 +9,20 @@ import Register from './Register'
  * @returns {object} react component
  */
 const User = () => {
-  const [currentForm, setCurrentForm] = useState('Login')
+  const [currentForm, setCurrentForm] = useState('')
+
+  /**
+   * Toggles the form between login - register.
+   *
+   * @param {string} formName - the form to switch to.
+   */
+  const toggleForm = (formName) => {
+    setCurrentForm(formName)
+  }
 
   return (
     <div className="user-container">
-      { currentForm === 'Login' && (
-        <Login />
-      )}
-      { currentForm === 'Register' && (
-        <Register />
-      )}
+      { currentForm === 'login' ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/> }
     </div>
   )
 }
