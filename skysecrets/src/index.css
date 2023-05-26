@@ -151,14 +151,15 @@ h3 {
   width: 100px;
 }
 
-.welcome-button {
+.welcome-button, .save-img-button {
   background: none;
   border: none;
   text-decoration: underline;
   cursor: pointer;
   color: white;
   font-size: 1.3rem;
-  padding-bottom: 20px;
+  paddint-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* login/register */

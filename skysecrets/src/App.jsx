@@ -15,7 +15,6 @@ import Welcome from './components/Welcome'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { LocationContext } from './context/LocationContext'
-import { UserContext } from './context/UserContext'
 import { useState } from 'react'
 
 /**
@@ -36,9 +35,6 @@ function App () {
         </LocationContext.Provider>
       <div className="content">
         <Switch>
-          <Route exact path="/image">
-            <Image />
-          </Route>
           <LocationContext.Provider value={{ location, setLocation, user, setUser }}>
           <Route exact path="/start">
             <Start />
@@ -54,6 +50,9 @@ function App () {
             </Route>
             <Route path="/map">
               <Map />
+            </Route>
+            <Route exact path="/image">
+              <Image />
             </Route>
             <Route path="/moon">
               <Moon />
