@@ -84,7 +84,7 @@ const Image = () => {
         'Content-Type': 'application/json'
       },
       credentials: 'include',
-      body: JSON.stringify({ image: { url: data.url, description: data.explanation, copyright: data.copywrite } })
+      body: JSON.stringify({ image: { url: data.url, description: data.explanation, copyright: data.copywrite, title: data.title } })
     })
     if (!response.ok) {
       throw new Error('Something went wrong with the fetch')

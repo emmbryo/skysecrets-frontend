@@ -614,5 +614,18 @@ h3 {
   opacity: 20%;
 }
 
+/* Library */
+.library-images-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+}
+
+.library-images-container img {
+  width: 300px;
+}
+
 
 
