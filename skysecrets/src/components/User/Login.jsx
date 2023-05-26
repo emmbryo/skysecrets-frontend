@@ -10,16 +10,32 @@ import { UserContext } from '../../context/UserContext'
  * @returns {object} react component
  */
 const Login = (props) => {
-  const { user, setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
+
+  const [error, setError] = useState('')
+  const [showError, setShowError] = useState(false)
+
   const usernameRef = useRef()
   const history = useHistory()
 
   useEffect(() => {
     usernameRef.current.focus()
   }, [])
+
+  useEffect(() => {
+    if (error === '') {
+      setShowError(false)
+    } else {
+      setShowError(true)
+    }
+  }, [error])
+
+  useEffect(() => {
+    console.log('showError ändrats', showError)
+  }, [showError])
+
   /**
    * Handles sumbit.
    *
@@ -27,22 +43,27 @@ const Login = (props) => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault()
-
+    let user
     try {
-      const login = await loginUser()
+      user = await loginUser()
       const hasAccount = await userAccountStatus()
       if (!hasAccount.account) {
         const newAccount = await createUserAccount()
       }
     } catch (error) {
-      console.log(error)
-      setErrorMsg(error?.message)
+      setError('Server not responding')
+      setShowError(true)
     }
 
-    setUser(true)
-    setUsername('')
-    setPassword('')
-    history.push('/start')
+    console.log(showError, 'innan rendering')
+    console.log(error, ': själva error')
+    console.log('user:', user)
+    if (user.status === 'logged in') {
+      setUser(true)
+      setUsername('')
+      setPassword('')
+      history.push('/start')
+    }
   }
 
   /**
@@ -66,9 +87,11 @@ const Login = (props) => {
     })
 
     if (response.status === 401) {
-      setErrorMsg('Invalid username or password, please try again')
+      setError('Invalid username or password, please try again')
+      console.log('error 401 i login', error)
+      setShowError(true)
     } else if (!response.ok) {
-      throw new Error('something went wrong with the fetch')
+      throw new Error('Server not responding')
     }
 
     const token = await response.json()
@@ -87,9 +110,10 @@ const Login = (props) => {
       credentials: 'include'
     })
     if (accountResponse.status === 403) {
-      setErrorMsg('login not valid, please try again.')
+      setError('Credentials not valid, please try again.')
+      setShowError(true)
     } else if (!accountResponse.ok) {
-      throw new Error('Something went wrong with the fetch')
+      throw new Error('Server not responding')
     }
     const account = await accountResponse.json()
     console.log(account)
@@ -108,9 +132,10 @@ const Login = (props) => {
       credentials: 'include'
     })
     if (accountResponse.status === 403) {
-      setErrorMsg('login not valid, please try again.')
+      setError('login not valid, please try again.')
+      setShowError(true)
     } else if (!accountResponse.ok) {
-      throw new Error('Something went wrong with the fetch')
+      throw new Error('Server not responding')
     }
     const account = await accountResponse.json()
     console.log(account)
@@ -119,6 +144,11 @@ const Login = (props) => {
 
   return (
     <div className="user-form-container">
+      { showError && (
+        <div className="error-message">
+          <p>{error}</p>
+        </div>
+      )}
       <h3>Log in</h3>
       <form onSubmit={handleSubmit} className="user-form">
         <label htmlFor="username">
@@ -133,7 +163,12 @@ const Login = (props) => {
           id="username"
           name="username"
           placeholder="Username"
-          value={username} onChange={(event) => setUsername(event.target.value)}/>
+          value={username}
+          onFocus={() => {
+            setShowError(false)
+            setError('')
+          }}
+          onChange={(event) => setUsername(event.target.value)}/>
         <label htmlFor="password">
           Password
         </label>
@@ -146,6 +181,10 @@ const Login = (props) => {
           name="password"
           placeholder="***********"
           value={password}
+          onFocus={() => {
+            setShowError(false)
+            setError('')
+          }}
           onChange={(event) => setPassword(event.target.value)}/>
         <input className="submit-button" type="submit" value="Login" />
       </form>

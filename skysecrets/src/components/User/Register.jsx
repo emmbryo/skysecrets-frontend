@@ -24,8 +24,16 @@ const Register = (props) => {
   }, [])
 
   useEffect(() => {
-    setShowError(true)
+    if (error === '') {
+      setShowError(false)
+    } else {
+      setShowError(true)
+    }
   }, [error])
+
+  useEffect(() => {
+    console.log('showError ändrats', showError)
+  }, [showError])
 
   /**
    * Handles sumbit.
@@ -35,36 +43,41 @@ const Register = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const payload = {
-      username,
-      password,
-      email,
-      firstName,
-      lastName
-    }
-    const url = 'http://localhost:8081/api/v1/register'
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
+    try {
+      const payload = {
+        username,
+        password,
+        email,
+        firstName,
+        lastName
+      }
+      const url = 'http://localhost:8081/api/v1/register'
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
 
-    if (response.status === 400) {
-      setError('Registration failed. Make sure the email was in correct format')
-    } else if (response.status === 409) {
-      setError('Username/email already taken, please try another one.')
-    } else if (!response.ok) {
-      throw new Error('Something went wrong with the fetch')
+      if (response.status === 400) {
+        setError('Registration failed. Make sure the email was in correct format')
+        console.log('Registration failed. Make sure the email was in correct format')
+      } else if (response.status === 409) {
+        setError('Username/email already taken, please try another one.')
+      } else if (!response.ok) {
+        throw new Error('Server not responding')
+      } else {
+        setUsername('')
+        setPassword('')
+        setEmail('')
+        setFirstName('')
+        setLastName('')
+        props.onFormSwitch('login')
+      }
+    } catch (error) {
+      setError('Server not responding')
     }
-
-    setUsername('')
-    setPassword('')
-    setEmail('')
-    setFirstName('')
-    setLastName('')
-    props.onFormSwitch('login')
   }
 
   return (
@@ -89,6 +102,7 @@ const Register = (props) => {
           name="username"
           placeholder="Username"
           value={username}
+          onFocus={() => setShowError(false)}
           onChange={(event) => setUsername(event.target.value)}/>
         <label htmlFor="password">
           Password (min 10 chars)
@@ -103,6 +117,7 @@ const Register = (props) => {
           name="password"
           placeholder="***********"
           value={password}
+          onFocus={() => setShowError(false)}
           onChange={(event) => setPassword(event.target.value)}/>
         <label htmlFor="email">
           E-mail
@@ -116,6 +131,7 @@ const Register = (props) => {
           name="email"
           placeholder="your-email@mail.com"
           value={email}
+          onFocus={() => setShowError(false)}
           onChange={(event) => setEmail(event.target.value)} />
         <label htmlFor="first-name">
           First Name
@@ -127,7 +143,9 @@ const Register = (props) => {
           maxLength="200"
           name="first-name"
           placeholder="first name"
-          value={firstName} onChange={(event) => setFirstName(event.target.value)} />
+          value={firstName}
+          onFocus={() => setShowError(false)}
+          onChange={(event) => setFirstName(event.target.value)} />
         <label htmlFor="last-name">
           Last Name
         </label>
@@ -139,6 +157,7 @@ const Register = (props) => {
           name="last-name"
           placeholder="last name"
           value={lastName}
+          onFocus={() => setShowError(false)}
           onChange={(event) => setLastName(event.target.value)}/>
         <input
           className="submit-button"
