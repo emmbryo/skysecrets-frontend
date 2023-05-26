@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import menu from '../img/menu-white.png'
 import { useHistory } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { LocationContext } from '../context/LocationContext'
 
 /**
  * DropDownMenu component.
@@ -8,6 +10,7 @@ import { useState } from 'react'
  * @returns {object} react component.
  */
 const DropDownMenu = () => {
+  const { user, setUser } = useContext(LocationContext)
   const [shown, setShown] = useState('drop-down-menu hidden')
   const history = useHistory()
 
@@ -42,6 +45,7 @@ const DropDownMenu = () => {
       } catch (error) {
         console.log(error)
       }
+      setUser(false)
       history.push('/user')
     } else {
       history.push(`${event.target.id}`)
@@ -54,8 +58,10 @@ const DropDownMenu = () => {
         <img src={menu} alt="menu" onClick={menuClick}/>
       </div>
       <div className={shown} onClick={menuClick}>
+        { !user && (
+          <div className="drop-down-item" id="/user" onClick={clickLink}>Login</div>
+        )}
         <div className="drop-down-item" id="/start" onClick={clickLink}>Start</div>
-        <div className="drop-down-item" id="/user" onClick={clickLink}>User</div>
         <div className="drop-down-item" id="/map" onClick={clickLink}>Location</div>
         <div className="drop-down-item" id="/overview" onClick={clickLink}>Overview</div>
         <div className="drop-down-item" id="/image" onClick={clickLink}>Image of the day</div>
@@ -63,8 +69,12 @@ const DropDownMenu = () => {
         <div className="drop-down-item" id="/moon" onClick={clickLink}>Moon</div>
         <div className="drop-down-item" id="/planets" onClick={clickLink}>Planets</div>
         <div className="drop-down-item" id="/index" onClick={clickLink}>K-index</div>
-        <div className="drop-down-item" id="/logout" onClick={clickLink}>Logout</div>
-        <div className="drop-down-item" id="/library" onClick={clickLink}>Your Library</div>
+        { user && (
+          <div className="drop-down-item" id="/library" onClick={clickLink}>Your Library</div>
+        )}
+        { user && (
+         <div className="drop-down-item" id="logout" onClick={clickLink}>Logout</div>
+        )}
       </div>
     </div>
   )
