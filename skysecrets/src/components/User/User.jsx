@@ -9,7 +9,7 @@ import Register from './Register'
  * @returns {object} react component
  */
 const User = () => {
-  const [currentForm, setCurrentForm] = useState('')
+  const [currentForm, setCurrentForm] = useState('login')
 
   /**
    * Toggles the form between login - register.

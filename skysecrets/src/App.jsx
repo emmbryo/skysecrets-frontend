@@ -10,6 +10,7 @@ import Overview from './components/Overview/Overview'
 import Kindex from './components/Kindex'
 import Location from './components/Location'
 import User from './components/User/User'
+import Library from './components/Library'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { LocationContext } from './context/LocationContext'
@@ -62,6 +63,9 @@ function App () {
             </Route>
             <Route path="/location">
               <Location />
+            </Route>
+            <Route path="/library">
+              <Library />
             </Route>
           </LocationContext.Provider>
         </Switch>
