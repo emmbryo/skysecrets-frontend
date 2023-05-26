@@ -20,6 +20,12 @@ const Map = () => {
   })
   const history = useHistory()
   const { location, setLocation } = useContext(LocationContext)
+  const locationPayload = {
+    location: {
+      lat: location[0],
+      lng: location[1]
+    }
+  }
 
   /**
    * Updates the location.
@@ -35,31 +41,73 @@ const Map = () => {
    *
    * @param {object} event - the triggering event.
    */
-  const handleSubmit = (event) => {
-    console.log('I handle submit', location)
-
-    const locationObject = {
-      location: {
-        lat: location[0],
-        lng: location[1]
-      }
+  const handleSubmit = async (event) => {
+    const account = await getAccountId()
+    if (!account.id) {
+      const newAccount = await createAccount()
     }
+    console.log(account)
+    await updateLocation(account)
+    // history.push('/user')
+  }
 
-    // använd useFetchPost-hook istället
-    fetch('http://localhost:8080/api/v1/account', {
-      method: 'POST',
+  /**
+   * Gets the account id.
+   *
+   * @returns {object} account id.
+   */
+  const getAccountId = async () => {
+    const urlGetId = 'http://localhost:8080/api/v1/account/'
+    const responseId = await fetch(urlGetId, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(locationObject)
-    }).then(response => {
-      if (!response.ok) {
-        throw Error('Something went wrong with the fetch.')
-      }
-      return response.json()
-    }).then(data => {
-      console.log('fetch klart: ', data)
+      credentials: 'include'
     })
+    if (!responseId.ok) {
+      throw new Error('Something went wrong with the fetch')
+    }
+    const account = await responseId.json()
+    return account
+  }
+
+  /**
+   * Gets the account id.
+   *
+   * @returns {object} account id.
+   */
+  const createAccount = async () => {
+    const urlGetId = 'http://localhost:8080/api/v1/account/'
+    const responseId = await fetch(urlGetId, {
+      method: 'POST',
+      credentials: 'include'
+    })
+    if (!responseId.ok) {
+      throw new Error('Something went wrong with the fetch')
+    }
+    const account = await responseId.json()
+    return account
+  }
+
+  /**
+   * Updates location.
+   *
+   * @param {object} account - ...
+   */
+  const updateLocation = async (account) => {
+    const url = `http://localhost:8080/api/v1/account/${account.accountId}`
+    const response = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(locationPayload)
+    })
+    if (!response.ok) {
+      throw new Error('Something went wrong with the fetch')
+    }
     history.push('/overview')
   }
 
