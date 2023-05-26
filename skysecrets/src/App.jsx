@@ -11,6 +11,7 @@ import Kindex from './components/Kindex'
 import Location from './components/Location'
 import User from './components/User/User'
 import Library from './components/Library'
+import Welcome from './components/Welcome'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { LocationContext } from './context/LocationContext'
@@ -37,8 +38,11 @@ function App () {
             <Image />
           </Route>
           <LocationContext.Provider value={{ location, setLocation }}>
-          <Route exact path="/">
+          <Route exact path="/start">
             <Start />
+          </Route>
+          <Route exact path="/">
+            <Welcome />
           </Route>
           <Route exact path="/user">
             <User />
