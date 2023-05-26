@@ -3,7 +3,7 @@ import useFetch from '../functions/useFetch'
 import { useState, useContext } from 'react'
 import defaultImage from '../img/default.jpg'
 import { useHistory } from 'react-router-dom'
-import { LocationContext } from '../context/LocationContext'
+import { UserContext } from '../context/UserContext'
 
 /**
  * Image component.
@@ -11,7 +11,7 @@ import { LocationContext } from '../context/LocationContext'
  * @returns {object} react component.
  */
 const Image = () => {
-  const { user } = useContext(LocationContext)
+  const { user } = useContext(UserContext)
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/image')
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)

@@ -14,7 +14,7 @@ import Library from './components/Library'
 import Welcome from './components/Welcome'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
-import { LocationContext } from './context/LocationContext'
+import { UserContext } from './context/UserContext'
 import { useState } from 'react'
 
 /**
@@ -30,12 +30,12 @@ function App () {
   return (
     <Router>
       <div className="App" data-testid="app-test">
-        <LocationContext.Provider value={{ location, setLocation, user, setUser }}>
+        <UserContext.Provider value={{ location, setLocation, user, setUser }}>
           <Header />
-        </LocationContext.Provider>
+        </UserContext.Provider>
       <div className="content">
         <Switch>
-          <LocationContext.Provider value={{ location, setLocation, user, setUser }}>
+          <UserContext.Provider value={{ location, setLocation, user, setUser }}>
           <Route exact path="/start">
             <Start />
           </Route>
@@ -72,7 +72,7 @@ function App () {
             <Route path="/library">
               <Library />
             </Route>
-          </LocationContext.Provider>
+          </UserContext.Provider>
         </Switch>
       </div>
     </div>

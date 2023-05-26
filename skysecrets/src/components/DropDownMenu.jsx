@@ -2,7 +2,7 @@
 import menu from '../img/menu-white.png'
 import { useHistory } from 'react-router-dom'
 import { useState, useContext } from 'react'
-import { LocationContext } from '../context/LocationContext'
+import { UserContext } from '../context/UserContext'
 
 /**
  * DropDownMenu component.
@@ -10,7 +10,7 @@ import { LocationContext } from '../context/LocationContext'
  * @returns {object} react component.
  */
 const DropDownMenu = () => {
-  const { user, setUser } = useContext(LocationContext)
+  const { user, setUser } = useContext(UserContext)
   const [shown, setShown] = useState('drop-down-menu hidden')
   const history = useHistory()
 

@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react'
-import { LocationContext } from '../context/LocationContext'
+import { UserContext } from '../context/UserContext'
 import globe from '../img/earth-coord.png'
 
 /**
@@ -8,7 +8,7 @@ import globe from '../img/earth-coord.png'
  * @returns {object} react component.
  */
 const Location = () => {
-  const { location } = useContext(LocationContext)
+  const { location } = useContext(UserContext)
   const [orientation, setOrientation] = useState(['N', 'W'])
 
   useEffect(() => {

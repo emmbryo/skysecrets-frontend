@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { LocationContext } from '../../context/LocationContext'
+import { UserContext } from '../../context/UserContext'
 
 /**
  * AuroraOverview Component.
@@ -7,7 +7,7 @@ import { LocationContext } from '../../context/LocationContext'
  * @returns {object} react component.
  */
 const AuroraOverview = () => {
-  const { location } = useContext(LocationContext)
+  const { location } = useContext(UserContext)
 
   return (
     <div className="aurora-overview">

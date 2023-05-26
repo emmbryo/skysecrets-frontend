@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import useFetch from '../functions/useFetch'
 import useFetchPost from '../functions/useFetchPost'
-import { LocationContext } from '../context/LocationContext'
+import { UserContext } from '../context/UserContext'
 
 /**
  * Moon component.
@@ -13,7 +13,7 @@ const Moon = () => {
   const [phaseText, setPhaseText] = useState('Waxing Crescent')
   const [moonClass, setMoonClass] = useState('moon-container-growing')
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/moon')
-  const { location } = useContext(LocationContext)
+  const { location } = useContext(UserContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/moon/times', { lat: location[0], lng: location[1] })
   console.log('I moon: ', postData, postIsPending, postError)
 
