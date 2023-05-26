@@ -69,10 +69,10 @@ const Aurora = () => {
             <Link to='/index' id="index-link">&rarr;More on planetary index</Link>
           </div>
           <p></p>
-          <button className="hide-aurora-info" onClick={handleClick}>Hide info</button>
+          <button className="aurora-info" onClick={handleClick}>Hide info</button>
         </div>
       )}
-      {!show && (<button className="show-aurora-info" onClick={handleClick}>Show info</button>)}
+      {!show && (<button className="aurora-info" onClick={handleClick}>Show info</button>)}
     </div>
   )
 }

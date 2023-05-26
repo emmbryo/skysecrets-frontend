@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
+import ImageUnit from './ImageUnit'
 
 /**
  * Library component.
@@ -72,7 +74,7 @@ const Library = () => {
       { populate && (
         <div className="library-images-container">
           {images.map(image => {
-            return <img src={image.url} alt={image.title} key={image._id} />
+            return <ImageUnit image={image} key={image._id} />
           })}
         </div>
       )}

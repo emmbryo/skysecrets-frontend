@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useContext } from 'react'
 import useFetch from '../functions/useFetch'
 import useFetchPost from '../functions/useFetchPost'
@@ -15,7 +16,6 @@ const Moon = () => {
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/moon')
   const { location } = useContext(UserContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/moon/times', { lat: location[0], lng: location[1] })
-  console.log('I moon: ', postData, postIsPending, postError)
 
   useEffect(() => {
     if (data) {

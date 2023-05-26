@@ -307,6 +307,7 @@ h3 {
   height: 40px;
   background-image: linear-gradient(-79deg,rgb(89, 85, 133), rgb(47, 45, 70), rgb(36, 33, 69));
   border-radius: 5px;
+  border: none;
 }
 
 .start-container button p {
@@ -615,7 +616,7 @@ h3 {
 }
 
 /* Library */
-.library-images-container {
+.library-images-container, .image-unit-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -625,6 +626,20 @@ h3 {
 
 .library-images-container img {
   width: 300px;
+  border-radius: 10px;
+}
+
+.image-unit-container {
+
+}
+
+.image-unit-button, .aurora-info {
+  background-image: linear-gradient(-79deg,rgb(89, 85, 133), rgb(47, 45, 70), rgb(36, 33, 69));
+  color: white;
+  padding: 8px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
 }
 
 

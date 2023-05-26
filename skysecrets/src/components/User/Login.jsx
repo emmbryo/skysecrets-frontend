@@ -10,7 +10,7 @@ import { UserContext } from '../../context/UserContext'
  * @returns {object} react component
  */
 const Login = (props) => {
-  const { setUser } = useContext(UserContext)
+  const { setUser, setLocation } = useContext(UserContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -33,7 +33,6 @@ const Login = (props) => {
   }, [error])
 
   useEffect(() => {
-    console.log('showError ändrats', showError)
   }, [showError])
 
   /**
@@ -49,15 +48,14 @@ const Login = (props) => {
       const hasAccount = await userAccountStatus()
       if (!hasAccount.account) {
         const newAccount = await createUserAccount()
+      } else {
+        await getLocation()
       }
     } catch (error) {
       setError('Server not responding')
       setShowError(true)
     }
 
-    console.log(showError, 'innan rendering')
-    console.log(error, ': själva error')
-    console.log('user:', user)
     if (user.status === 'logged in') {
       setUser(true)
       setUsername('')
@@ -88,14 +86,12 @@ const Login = (props) => {
 
     if (response.status === 401) {
       setError('Invalid username or password, please try again')
-      console.log('error 401 i login', error)
       setShowError(true)
     } else if (!response.ok) {
       throw new Error('Server not responding')
     }
 
     const token = await response.json()
-    console.log(token)
     return token
   }
 
@@ -116,7 +112,6 @@ const Login = (props) => {
       throw new Error('Server not responding')
     }
     const account = await accountResponse.json()
-    console.log(account)
     return account
   }
 
@@ -140,6 +135,13 @@ const Login = (props) => {
     const account = await accountResponse.json()
     console.log(account)
     return account
+  }
+
+  /**
+   * Gets the previously set location for user.
+   */
+  const getLocation = () => {
+    console.log('Hämta koords')
   }
 
   return (
