@@ -43,9 +43,6 @@ const Map = () => {
    */
   const handleSubmit = async (event) => {
     const account = await getAccountId()
-    if (!account.id) {
-      const newAccount = await createAccount()
-    }
     console.log(account)
     await updateLocation(account)
     // history.push('/user')
@@ -63,24 +60,6 @@ const Map = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      credentials: 'include'
-    })
-    if (!responseId.ok) {
-      throw new Error('Something went wrong with the fetch')
-    }
-    const account = await responseId.json()
-    return account
-  }
-
-  /**
-   * Gets the account id.
-   *
-   * @returns {object} account id.
-   */
-  const createAccount = async () => {
-    const urlGetId = 'http://localhost:8080/api/v1/account/'
-    const responseId = await fetch(urlGetId, {
-      method: 'POST',
       credentials: 'include'
     })
     if (!responseId.ok) {

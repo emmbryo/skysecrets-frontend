@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import { LocationContext } from '../../context/LocationContext'
 
 /**
  * Login component.
@@ -9,6 +10,7 @@ import { useHistory } from 'react-router-dom'
  * @returns {object} react component
  */
 const Login = (props) => {
+  const { user, setUser } = useContext(LocationContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
@@ -37,9 +39,10 @@ const Login = (props) => {
       setErrorMsg(error?.message)
     }
 
+    setUser(true)
     setUsername('')
     setPassword('')
-    history.push('/')
+    history.push('/start')
   }
 
   /**

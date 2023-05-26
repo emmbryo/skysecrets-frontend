@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import useFetch from '../functions/useFetch'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import defaultImage from '../img/default.jpg'
 import { useHistory } from 'react-router-dom'
+import { LocationContext } from '../context/LocationContext'
 
 /**
  * Image component.
@@ -13,7 +15,6 @@ const Image = () => {
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
   const history = useHistory()
-  const bearer = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbHZpcyIsImdpdmVuX25hbWUiOiJlbHZpc3NzcyIsImZhbWlseV9uYW1lIjoia2luZ2VuIiwiZW1haWwiOiJ0aGVfa2luZ0BzdHVkZW50LmxudS5zZSIsImlkIjoiNjQ2Y2NkYTNlNGQ0YjQwMjliZjNmMjg0IiwiaWF0IjoxNjg1MDI3NDcwLCJleHAiOjE2ODUwNjM0NzB9.fcMFLkZgBmWddayJNiees0Ficcj5wTK005a0XZCm_lz5IgrtF58IP-_L5NlK08tTYMZRINKjc80J7IvnlO6ncASq61DOCfVCgjqng7U1XFdzblvhzcerFKbiiopK0Q9KDQkypAtX2nP4qdkm2PWXnss-tiaaitIsicBl3H4kscnJddZPpAQ7pN8iFFn103nScpROEHNzeinuDtH53mgcrKs3KV_MpqfgKtgKNtMH9TGWOkx8RA0o68EB0x0TE88VD59wZbeIaZej4t2_PyuDbQXBog9mYfGbGO8sivkftEIOjHzpe71U6pJrY6-fUjqM4vd5xe7KOswscXC0EVWNGg'
 
   /**
    * Shows description.
@@ -36,10 +37,14 @@ const Image = () => {
    * @param {object} event - ...
    */
   const saveImage = async (event) => {
-    console.log('saving: ', data.title)
-    const account = await getAccountId()
-    console.log(account)
-    await updateLocation(account)
+    try {
+      console.log('saving: ', data.title)
+      const account = await getAccountId()
+      console.log(account)
+      await updateImages(account)
+    } catch (error) {
+      console.log(error)
+    }
 
     // history.push('/user')
   }
@@ -54,9 +59,9 @@ const Image = () => {
     const responseId = await fetch(urlGetId, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${bearer}`
-      }
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
     })
     if (!responseId.ok) {
       throw new Error('Something went wrong with the fetch')
@@ -70,20 +75,20 @@ const Image = () => {
    *
    * @param {object} account - ...
    */
-  const updateLocation = async (account) => {
+  const updateImages = async (account) => {
     const url = `http://localhost:8080/api/v1/account/${account.accountId}/images`
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${bearer}`
+        'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify({ image: { url: data.url, description: data.explanation, copyright: data.copywrite } })
     })
     if (!response.ok) {
       throw new Error('Something went wrong with the fetch')
     }
-    history.push('/overview')
+    history.push('/library')
   }
 
   return (

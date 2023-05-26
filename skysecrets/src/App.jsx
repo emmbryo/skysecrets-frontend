@@ -15,6 +15,7 @@ import Welcome from './components/Welcome'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { LocationContext } from './context/LocationContext'
+import { UserContext } from './context/UserContext'
 import { useState } from 'react'
 
 /**
@@ -25,11 +26,12 @@ import { useState } from 'react'
 function App () {
   const vasaMuseet = [59.32915892217842, 18.093897700309757]
   const [location, setLocation] = useState(vasaMuseet)
+  const [user, setUser] = useState(false)
 
   return (
     <Router>
       <div className="App" data-testid="app-test">
-        <LocationContext.Provider value={{ location, setLocation }}>
+        <LocationContext.Provider value={{ location, setLocation, user, setUser }}>
           <Header />
         </LocationContext.Provider>
       <div className="content">
@@ -37,7 +39,7 @@ function App () {
           <Route exact path="/image">
             <Image />
           </Route>
-          <LocationContext.Provider value={{ location, setLocation }}>
+          <LocationContext.Provider value={{ location, setLocation, user, setUser }}>
           <Route exact path="/start">
             <Start />
           </Route>
