@@ -1,7 +1,7 @@
 import sun from './img/sun.png'
 import moon from './img/moon.png'
 import { useContext } from 'react'
-import { LocationContext } from '../../context/LocationContext'
+import { UserContext } from '../../context/UserContext'
 import useFetchPost from '../../functions/useFetchPost'
 
 /**
@@ -10,7 +10,7 @@ import useFetchPost from '../../functions/useFetchPost'
  * @returns {object} react component.
  */
 const SunAndMoon = () => {
-  const { location } = useContext(LocationContext)
+  const { location } = useContext(UserContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/moon/times', { lat: location[0], lng: location[1] })
 
   return (

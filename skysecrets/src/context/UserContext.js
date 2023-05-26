@@ -1,6 +1,4 @@
 import { createContext } from 'react'
 
-const user = {
-  loggedIn: false
-}
-export const UserContext = createContext(user)
+const vasaMuseet = [59.32915892217842, 18.093897700309757]
+export const UserContext = createContext(vasaMuseet)

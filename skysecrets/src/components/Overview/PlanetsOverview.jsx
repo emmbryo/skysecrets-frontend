@@ -5,7 +5,7 @@ import jupiter from '../Planets/img/jupiter.png'
 import saturn from '../Planets/img/saturn.png'
 import useFetchPost from '../../functions/useFetchPost'
 import { useContext } from 'react'
-import { LocationContext } from '../../context/LocationContext'
+import { UserContext } from '../../context/UserContext'
 
 /**
  * PlanetsOverview component.
@@ -13,7 +13,7 @@ import { LocationContext } from '../../context/LocationContext'
  * @returns {object} react component.
  */
 const PlanetsOverview = () => {
-  const { location } = useContext(LocationContext)
+  const { location } = useContext(UserContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets', { lat: location[0], lng: location[1] })
 
   return (

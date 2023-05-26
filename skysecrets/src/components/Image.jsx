@@ -3,7 +3,7 @@ import useFetch from '../functions/useFetch'
 import { useState, useContext } from 'react'
 import defaultImage from '../img/default.jpg'
 import { useHistory } from 'react-router-dom'
-import { LocationContext } from '../context/LocationContext'
+import { UserContext } from '../context/UserContext'
 
 /**
  * Image component.
@@ -11,6 +11,7 @@ import { LocationContext } from '../context/LocationContext'
  * @returns {object} react component.
  */
 const Image = () => {
+  const { user } = useContext(UserContext)
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/image')
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
@@ -125,7 +126,15 @@ const Image = () => {
       { !descriptionShown && (
         <button onClick={showDescription}>Show description</button>
       )}
-      <button className="save-img-button" onClick={saveImage}>Save image to library</button>
+      { user && (
+        <button className="save-img-button" onClick={saveImage}>Save image to library</button>
+      )}
+      { !user && (
+        <div className="image-login-promt">
+          <p>Like the image and want to save it? </p>
+          <button className="save-img-button" onClick={() => history.push('/user')}>Go to login page</button>
+        </div>
+      )}
     </div>
   )
 }

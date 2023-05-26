@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 // eslint-disable-next-line no-unused-vars
 import { Link } from 'react-router-dom'
-import { LocationContext } from '../context/LocationContext'
+import { UserContext } from '../context/UserContext'
 import useFetch from '../functions/useFetch'
 import useFetchPost from '../functions/useFetchPost'
 
@@ -11,7 +11,7 @@ import useFetchPost from '../functions/useFetchPost'
  * @returns {object} react component.
  */
 const Aurora = () => {
-  const { location } = useContext(LocationContext)
+  const { location } = useContext(UserContext)
   const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/aurora')
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/aurora/analysis', { lat: location[0], lng: location[1] })
   const [show, setShow] = useState(false)

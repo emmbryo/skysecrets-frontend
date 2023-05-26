@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import { useContext } from 'react'
 import iconImage from '../img/placeholder.png'
 import { useHistory } from 'react-router-dom'
-import { LocationContext } from '../context/LocationContext'
+import { UserContext } from '../context/UserContext'
 import Location from './Location'
 
 /**
@@ -19,7 +19,7 @@ const Map = () => {
     iconSize: [38, 38]
   })
   const history = useHistory()
-  const { location, setLocation } = useContext(LocationContext)
+  const { location, setLocation, user } = useContext(UserContext)
   const locationPayload = {
     location: {
       lat: location[0],
@@ -75,19 +75,23 @@ const Map = () => {
    * @param {object} account - ...
    */
   const updateLocation = async (account) => {
-    const url = `http://localhost:8080/api/v1/account/${account.accountId}`
-    const response = await fetch(url, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify(locationPayload)
-    })
-    if (!response.ok) {
-      throw new Error('Something went wrong with the fetch')
+    try {
+      const url = `http://localhost:8080/api/v1/account/${account.accountId}`
+      const response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(locationPayload)
+      })
+      if (!response.ok) {
+        throw new Error('Something went wrong with the fetch')
+      }
+      history.push('/overview')
+    } catch (error) {
+      console.log(error.message)
     }
-    history.push('/overview')
   }
 
   /**
@@ -125,10 +129,18 @@ const Map = () => {
           </Marker>}
           <MapEvents handleClick={handleCLick} />
       </MapContainer>
-      <div className="map-footer">
-        <button id="map-button" onClick={handleSubmit}>Set location</button>
-        <Location />
-      </div>
+      { user && (
+        <div className="map-footer">
+          <button id="map-button" onClick={handleSubmit}>Save location</button>
+          <Location />
+        </div>
+      )}
+      { !user && (
+        <div className="image-login-promt">
+          <p>Want to save your position?</p>
+          <button className="save-img-button" onClick={() => history.push('/user')}>Go to login page</button>
+        </div>
+      )}
     </div>
   )
 }

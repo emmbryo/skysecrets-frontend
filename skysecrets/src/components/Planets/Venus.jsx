@@ -2,7 +2,7 @@ import venus from './img/venus.png'
 import earth from './img/earth.png'
 import { useState, useContext } from 'react'
 import useFetchPost from '../../functions/useFetchPost'
-import { LocationContext } from '../../context/LocationContext'
+import { UserContext } from '../../context/UserContext'
 
 /**
  * Venus component.
@@ -11,7 +11,7 @@ import { LocationContext } from '../../context/LocationContext'
  */
 const Venus = () => {
   const [showInfo, setShowInfo] = useState(false)
-  const { location } = useContext(LocationContext)
+  const { location } = useContext(UserContext)
   const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets/venus', { lat: location[0], lng: location[1] })
 
   /**
