@@ -18,7 +18,7 @@ const PlanetsOverview = () => {
 
   return (
     <div className="planets-overview-container">
-      <p>Over horizon:</p>
+      <p>Currently over horizon:</p>
           {postError && (
             <div>An error occurred: {postError}</div>
           )}

@@ -77,7 +77,9 @@ const ImageUnit = (props) => {
   return (
     <div className="image-unit-container" key={props.image._id}>
       <p>{props.image.title}</p>
-      <img src={props.image.url} alt={props.image.title} />
+      <div className="image-unit">
+        <img src={props.image.url} alt={props.image.title} />
+      </div>
       { showDescription && (
        <p>{props.image.description}</p>
       )}

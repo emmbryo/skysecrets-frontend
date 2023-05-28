@@ -127,7 +127,7 @@ h3 {
   align-items: center; /* vertically center */
 }
 
-.start-container, .text, .overview-container, .planet, .show-planet-info, .aurora, .header-container, .user-container, .welcome-container, .welcome-info, .welcome-login, .welcome-register, .top-choice-start-container {
+.start-container, .text, .overview-container, .planet, .show-planet-info, .aurora, .header-container, .user-container, .welcome-container, .welcome-info, .welcome-login, .welcome-register, .top-choice-start-container, .welcome-logged-in {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -135,7 +135,7 @@ h3 {
   align-items: center; /* vertically center */
 }
 /* welcome */
-.welcome-info, .welcome-login, .welcome-register {
+.welcome-info, .welcome-login, .welcome-register, .welcome-logged-in {
   width: 75%;
   padding: 8px;
   border-radius: 10px;
@@ -156,7 +156,7 @@ h3 {
   text-decoration: underline;
   cursor: pointer;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 
   padding-bottom: 10px;
 }
@@ -378,21 +378,21 @@ h3 {
 }
 
 .space-image-container .space-image {
-  background: rgb(29, 27, 48);
-  border-radius: 5px;
+  background: rgb(47, 44, 73);
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .space-image img, #default-img {
   width: 300px;
   border-radius: 5px;
-  padding: 10px;
   border: solid, 1px, white;
 }
 
 .space-image-container .img-button {
   background-image: linear-gradient(-79deg,rgb(89, 85, 133), rgb(47, 45, 70), rgb(36, 33, 69));
   color: white;
-  margin: 10px;
+  margin: 20px;
   border: none;
   border-radius: 10px;
   padding: 8px;
@@ -432,9 +432,22 @@ h3 {
 
 .solar-magnetic-container div {
   margin-top: 20px;
-  border: solid 1px white;
   padding: 5px;
   border-radius: 5px;
+  background-image: linear-gradient(-79deg,rgb(89, 85, 133), rgb(47, 45, 70), rgb(36, 33, 69));
+}
+
+.aurora-probability {
+  background-image: linear-gradient(-79deg, rgb(31, 29, 54),rgb(72, 69, 109), rgb(23, 22, 43));
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.oval-container {
+  background: rgb(72, 69, 109);
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .aurora-data {
@@ -455,13 +468,13 @@ h3 {
 }
 
 .planetary-index {
-  border: solid 1px white;
+  width: 96%;
   border-radius: 5px;
   padding: 5px;
+  background-image: linear-gradient(-79deg,rgb(89, 85, 133), rgb(47, 45, 70), rgb(36, 33, 69));
 }
 #index-link {
   color: white;
-  text-decoration: none;
 }
 
 /* map */
@@ -639,8 +652,10 @@ h3 {
   border-radius: 10px;
 }
 
-.image-unit-container {
-
+.image-unit {
+  background: rgb(47, 44, 73);
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .image-unit-button, .aurora-info {

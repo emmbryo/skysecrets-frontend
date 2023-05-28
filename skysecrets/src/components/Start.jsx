@@ -30,7 +30,6 @@ const Start = () => {
       { !user && (
         <div className="top-choice-start-container">
         <div className="text">
-        <p>Welcome!</p>
         <p className="start-text">To be able to set location and view your library, please log in:</p>
       </div>
       <button className="start-button">

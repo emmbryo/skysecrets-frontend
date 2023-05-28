@@ -46,8 +46,15 @@ const Aurora = () => {
         </div>
       )}
       </div>
-      {location[0] >= 0 && (<img src="https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg" alt="aurora" />)}
-      {location[0] < 0 && (<img src="https://services.swpc.noaa.gov/images/aurora-forecast-southern-hemisphere.jpg" alt="aurora" />)}
+      {location[0] >= 0 && (
+        <div className="oval-container">
+          <img src="https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg" alt="aurora" />
+        </div>)}
+      {location[0] < 0 && (
+        <div className="oval-container">
+        <img src="https://services.swpc.noaa.gov/images/aurora-forecast-southern-hemisphere.jpg" alt="aurora" />
+      </div>
+      )}
       {isPending && (<p>Loading...</p>)}
       {error && (<p>An error occured: { error }</p>)}
       {!isPending && data && show && (
