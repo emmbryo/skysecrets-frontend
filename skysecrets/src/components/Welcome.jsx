@@ -14,7 +14,7 @@ const Welcome = () => {
       <div className="welcome-info">
         <h3>Welcome!</h3>
         <img className="welcome-image" src={saturn} alt="saturn" />
-        <p>This is SkySecrets, an app to help you keep track on what is happening on the night sky.</p>
+        <p>This is SkySecrets, an app to help you keep track on what is happening on the night sky. Let's get started!</p>
       </div>
       <div className="welcome-login">
         <h3>Already an user?</h3>

@@ -49,7 +49,7 @@ const Login = (props) => {
       if (!hasAccount.account) {
         const newAccount = await createUserAccount()
       } else {
-        await getLocation()
+        await getLocation(hasAccount.accountId)
       }
     } catch (error) {
       setError('Server not responding')
@@ -133,15 +133,24 @@ const Login = (props) => {
       throw new Error('Server not responding')
     }
     const account = await accountResponse.json()
-    console.log(account)
     return account
   }
 
   /**
    * Gets the previously set location for user.
+   *
+   * @param {string} accountId - ...
    */
-  const getLocation = () => {
-    console.log('Hämta koords')
+  const getLocation = async (accountId) => {
+    const url = `${process.env.REACT_APP_API_BASE_URL}/account/${accountId}`
+    const response = await fetch(url, {
+      credentials: 'include'
+    })
+    if (!response.ok) {
+      throw new Error('Server not responding')
+    }
+    const accountData = await response.json()
+    setLocation([Number.parseFloat(accountData.location.lat), Number.parseFloat(accountData.location.lng)])
   }
 
   return (

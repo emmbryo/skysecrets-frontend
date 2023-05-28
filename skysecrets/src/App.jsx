@@ -15,7 +15,7 @@ import Welcome from './components/Welcome'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { UserContext } from './context/UserContext'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 /**
  * App component.
@@ -26,6 +26,30 @@ function App () {
   const vasaMuseet = [59.32915892217842, 18.093897700309757]
   const [location, setLocation] = useState(vasaMuseet)
   const [user, setUser] = useState(false)
+
+  useEffect(() => {
+    /**
+     * Checks if there is a valid user.
+     */
+    const checkUser = async () => {
+      try {
+        const url = 'http://localhost:8080/api/v1/account/user'
+        const response = await fetch(url, {
+          credentials: 'include'
+        })
+        if (!response.ok) {
+          setUser(false)
+        }
+        const user = await response.json()
+        if (user.user) {
+          setUser(true)
+        }
+      } catch (error) {
+        console.log(error?.message)
+      }
+    }
+    checkUser()
+  }, [])
 
   return (
     <Router>

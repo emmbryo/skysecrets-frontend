@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ImageUnit from './ImageUnit'
 
 /**
@@ -11,8 +11,11 @@ const Library = () => {
   const [images, setImages] = useState([])
   const [populate, setPopulate] = useState(false)
 
+  useEffect(() => {
+    getImages()
+  }, [])
   /**
-   * Gets the images from user.
+   * Gets the images from authenticated user.
    */
   const getImages = async () => {
     try {
@@ -62,16 +65,13 @@ const Library = () => {
       throw new Error('Server not responding')
     }
     const images = await response.json()
-    return images
+    return images.reverse()
   }
 
   return (
     <div className="library-container">
       <h3>My library</h3>
-      { !populate && (
-        <button onClick={getImages}>Load my images</button>
-      )}
-      { populate && (
+      { images && (
         <div className="library-images-container">
           {images.map(image => {
             return <ImageUnit image={image} key={image._id} />
@@ -81,11 +81,5 @@ const Library = () => {
     </div>
   )
 }
-
-// {postData.reasons.map(reason => {
-//   return (
-//     <li key={reason.id}>{reason.text}</li>
-//   )
-// })}
 
 export default Library
