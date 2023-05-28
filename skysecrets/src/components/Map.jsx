@@ -54,7 +54,7 @@ const Map = () => {
    * @returns {object} account id.
    */
   const getAccountId = async () => {
-    const urlGetId = 'http://localhost:8080/api/v1/account/'
+    const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
     const responseId = await fetch(urlGetId, {
       method: 'GET',
       headers: {
@@ -76,7 +76,7 @@ const Map = () => {
    */
   const updateLocation = async (account) => {
     try {
-      const url = `http://localhost:8080/api/v1/account/${account.accountId}`
+      const url = `${process.env.REACT_APP_API_BASE_URL}/account/${account.accountId}`
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useContext } from 'react'
 import useFetch from '../functions/useFetch'
 import useFetchPost from '../functions/useFetchPost'
@@ -12,10 +13,9 @@ const Moon = () => {
   const [phase, setPhase] = useState(0)
   const [phaseText, setPhaseText] = useState('Waxing Crescent')
   const [moonClass, setMoonClass] = useState('moon-container-growing')
-  const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/moon')
+  const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/moon`)
   const { location } = useContext(UserContext)
-  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/moon/times', { lat: location[0], lng: location[1] })
-  console.log('I moon: ', postData, postIsPending, postError)
+  const { postData, postIsPending, postError } = useFetchPost(`${process.env.REACT_APP_API_BASE_URL}/moon/times`, { lat: location[0], lng: location[1] })
 
   useEffect(() => {
     if (data) {

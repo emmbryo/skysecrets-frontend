@@ -12,8 +12,8 @@ import useFetchPost from '../functions/useFetchPost'
  */
 const Aurora = () => {
   const { location } = useContext(UserContext)
-  const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/aurora')
-  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/aurora/analysis', { lat: location[0], lng: location[1] })
+  const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/aurora`)
+  const { postData, postIsPending, postError } = useFetchPost(`${process.env.REACT_APP_API_BASE_URL}/aurora/analysis`, { lat: location[0], lng: location[1] })
   const [show, setShow] = useState(false)
 
   /**
@@ -46,8 +46,15 @@ const Aurora = () => {
         </div>
       )}
       </div>
-      {location[0] >= 0 && (<img src="https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg" alt="aurora" />)}
-      {location[0] < 0 && (<img src="https://services.swpc.noaa.gov/images/aurora-forecast-southern-hemisphere.jpg" alt="aurora" />)}
+      {location[0] >= 0 && (
+        <div className="oval-container">
+          <img src="https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg" alt="aurora" />
+        </div>)}
+      {location[0] < 0 && (
+        <div className="oval-container">
+        <img src="https://services.swpc.noaa.gov/images/aurora-forecast-southern-hemisphere.jpg" alt="aurora" />
+      </div>
+      )}
       {isPending && (<p>Loading...</p>)}
       {error && (<p>An error occured: { error }</p>)}
       {!isPending && data && show && (
@@ -69,10 +76,10 @@ const Aurora = () => {
             <Link to='/index' id="index-link">&rarr;More on planetary index</Link>
           </div>
           <p></p>
-          <button className="hide-aurora-info" onClick={handleClick}>Hide info</button>
+          <button className="aurora-info" onClick={handleClick}>Hide info</button>
         </div>
       )}
-      {!show && (<button className="show-aurora-info" onClick={handleClick}>Show info</button>)}
+      {!show && (<button className="aurora-info" onClick={handleClick}>Show info</button>)}
     </div>
   )
 }

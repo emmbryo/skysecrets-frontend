@@ -32,7 +32,7 @@ const DropDownMenu = () => {
    */
   const clickLink = async (event) => {
     if (event.target.id === 'logout') {
-      const url = 'http://localhost:8081/api/v1/logout'
+      const url = `${process.env.REACT_APP_AUTH_API_BASE_URL}/logout`
       try {
         const response = await fetch(url, {
           credentials: 'include'

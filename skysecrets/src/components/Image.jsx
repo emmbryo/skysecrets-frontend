@@ -12,7 +12,7 @@ import { UserContext } from '../context/UserContext'
  */
 const Image = () => {
   const { user } = useContext(UserContext)
-  const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/image')
+  const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/image`)
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
   const history = useHistory()
@@ -56,7 +56,7 @@ const Image = () => {
    * @returns {object} account id.
    */
   const getAccountId = async () => {
-    const urlGetId = 'http://localhost:8080/api/v1/account/'
+    const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
     const responseId = await fetch(urlGetId, {
       method: 'GET',
       headers: {
@@ -77,14 +77,14 @@ const Image = () => {
    * @param {object} account - ...
    */
   const updateImages = async (account) => {
-    const url = `http://localhost:8080/api/v1/account/${account.accountId}/images`
+    const url = `${process.env.REACT_APP_API_BASE_URL}/account/${account.accountId}/images`
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       credentials: 'include',
-      body: JSON.stringify({ image: { url: data.url, description: data.explanation, copyright: data.copywrite } })
+      body: JSON.stringify({ image: { url: data.url, description: data.explanation, copyright: data.copywrite, title: data.title } })
     })
     if (!response.ok) {
       throw new Error('Something went wrong with the fetch')
@@ -121,10 +121,10 @@ const Image = () => {
         <p id="image-explanation">{ explanation }</p>
       )}
       { descriptionShown && (
-        <button onClick={hideDescription}>Hide description</button>
+        <button className="img-button" onClick={hideDescription}>Hide description</button>
       )}
       { !descriptionShown && (
-        <button onClick={showDescription}>Show description</button>
+        <button className="img-button" onClick={showDescription}>Show description</button>
       )}
       { user && (
         <button className="save-img-button" onClick={saveImage}>Save image to library</button>
