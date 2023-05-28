@@ -127,7 +127,7 @@ h3 {
   align-items: center; /* vertically center */
 }
 
-.start-container, .text, .overview-container, .planet, .show-planet-info, .aurora, .header-container, .user-container, .welcome-container, .welcome-info, .welcome-login, .welcome-register, .top-choice-start-container, .welcome-logged-in {
+.start-container, .text, .overview-container, .planet, .show-planet-info, .aurora, .header-container, .user-container, .welcome-container, .welcome-info, .welcome-login, .welcome-register, .top-choice-start-container, .welcome-logged-in, .planet-name {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -213,15 +213,18 @@ h3 {
 /* planets */
 .planets-container {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 5% 20% 70% 5%;
   grid-template-rows: 30px auto;
   grid-template-areas: 
-    " . . "
-    "planet-side-bar planet-info";
+    ". . . ."
+    ". planet-side-bar planet-info .";
 }
 
 .planets-container img {
   width: 150px;
+}
+.planet img {
+  margin: 20px;
 }
 
 .sidebar-container {
@@ -235,6 +238,85 @@ h3 {
 
 .sidebar-container img {
   width: 40px;
+}
+.sidebar-container #saturn {
+  width: 60px;
+  border: none;
+}
+
+.sidebar-container #mercury, .mercury-container img {
+  border: solid 1px rgb(66, 43, 15);
+  border-radius: 50%;
+}
+.sidebar-container #venus, .venus-container img {
+  border: solid 1px rgb(39, 38, 37);
+  border-radius: 50%;
+}
+
+.planet-start-view-container {
+  display: grid;
+  grid-template-columns: 8% 40% 5% 47%;
+  grid-template-rows: 20px auto;
+  grid-template-areas: 
+  " . planet-start-title planet-start-title planet-start-title "
+  " . sidebar-xl . planet-names";
+}
+
+.planet-names {
+  grid-area: planet-names;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  gap: 28px;
+}
+.planet-names p {
+  text-align: center;
+  font-family: oldNewspaper;
+  width: 100px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: solid 1px white;
+  padding: 5px;
+}
+
+.jupiter-container .planet-name p, .mars-container .planet-name p, .saturn-container .planet-name p, .venus-container .planet-name p, .mercury-container .planet-name p {
+  text-align: center;
+  font-family: oldNewspaper;
+  width: 100px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: solid 1px white;
+  padding: 5px;
+}
+.mercury {
+  background-color: rgb(147, 116, 86);
+}
+.venus {
+  background-color: rgb(134, 129, 125);
+}
+.mars {
+  background-color: rgb(114, 48, 17);
+}
+.jupiter {
+  background-color: rgb(156, 97, 15);
+}
+.saturn {
+  background-color: rgb(181, 136, 77);
+}
+
+.planet-start-title {
+  grid-area: planet-start-title;
+  margin-left: 50px;
+}
+
+.sidebar-xl {
+  grid-area: sidebar-xl;
+}
+.sidebar-xl .sidebar-container img {
+  width: 80px;
+}
+.sidebar-xl .sidebar-container #saturn {
+  width: 150px;
 }
 
 .planet-side-bar {
@@ -284,8 +366,9 @@ h3 {
   height: 40px;
   width: 100px;
   margin-top: 30px;
-  background:rgb(100, 96, 145);
-  border-radius: 5px;
+  background-image: linear-gradient(-79deg,rgb(89, 85, 133), rgb(47, 45, 70), rgb(36, 33, 69));
+  border-radius: 10px;
+  border: none;
   color: white;
   font-size: 15px;
 }
@@ -438,14 +521,14 @@ h3 {
 }
 
 .aurora-probability {
-  background-image: linear-gradient(-79deg, rgb(31, 29, 54),rgb(72, 69, 109), rgb(23, 22, 43));
+  background: rgb(24, 24, 46);
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 20px;
 }
 
 .oval-container {
-  background: rgb(72, 69, 109);
+  background: rgb(47, 44, 73);
   padding: 5px;
   border-radius: 10px;
 }
@@ -498,6 +581,10 @@ h3 {
 
 #map-button {
   margin: 10px;
+  background: rgb(146, 203, 233);
+  border-radius: 10px;
+  padding: 8px;
+  border: none;
 }
 
 /* location */

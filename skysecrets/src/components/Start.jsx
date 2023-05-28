@@ -17,7 +17,6 @@ const Start = () => {
       { user && (
         <div className="top-choice-start-container">
           <div className="text">
-          <p>Welcome!</p>
           <p className="start-text">To get accurate information please set a location of interest:</p>
         </div>
         <button className="start-button">
@@ -40,7 +39,7 @@ const Start = () => {
     </div>
       )}
       <div className="text">
-        <p className="start-text">Or check the status for previous location:</p>
+        <p className="start-text">Or check the status for previously set location:</p>
         <Location />
       </div>
       <button className="start-button">

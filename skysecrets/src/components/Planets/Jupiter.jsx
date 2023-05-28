@@ -24,12 +24,14 @@ const Jupiter = () => {
 
   return (
     <div className="jupiter-container">
-      <h3>Jupiter</h3>
+      <div className="planet-name">
+        <p className="jupiter">Jupiter</p>
+      </div>
       {postIsPending && (
-        <div>Loading...</div>
+        <div className="horizon-info"><p>Loading...</p></div>
       )}
       {postError && (
-        <div>an error occurred: {postError}</div>
+        <div className="horizon-info">an error occurred: {postError}</div>
       )}
       {!postIsPending && postData.planetOverHorizon && (
         <div className="horizon-info">

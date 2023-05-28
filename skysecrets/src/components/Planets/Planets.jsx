@@ -6,7 +6,6 @@ import Jupiter from './Jupiter'
 import Saturn from './Saturn'
 import Sidebar from './Sidebar'
 import { useState } from 'react'
-import PlanetStartView from './PlanetStartView'
 
 /**
  * Planets component.
@@ -39,9 +38,9 @@ const Planets = () => {
    * @param {object} event the click event.
    */
   const handleClick = (event) => {
-    console.log(event.target.alt)
+    console.log(event.target.id)
     allToFalse()
-    switch (event.target.alt) {
+    switch (event.target.id) {
       case 'mercury':
         setIfMercury(true)
         break
@@ -64,18 +63,37 @@ const Planets = () => {
   }
 
   return (
-    <div className="planets-container">
+    <div className="planets-outer-container">
+      <div className="planet-overview-container">
+      {ifOverview && (
+        <div className="planet-start-view-container" onClick={handleClick}>
+          <div className="sidebar-xl">
+            <Sidebar />
+          </div>
+          <div className="planet-names" onClick={handleClick}>
+            <p id="mercury" className="mercury">Mercury</p>
+            <p id="venus" className="venus">Venus</p>
+            <p id="mars" className="mars">Mars</p>
+            <p id="jupiter" className="jupiter">Jupiter</p>
+            <p id="saturn" className="saturn">Saturn</p>
+          </div>
+        </div>
+      )}
+    </div>
+    {!ifOverview && (
+      <div className="planets-container">
       <div className="planet-side-bar" onClick={handleClick}>
         <Sidebar />
       </div>
       <div className="planet-info">
-        {ifOverview && (<PlanetStartView />)}
         {ifMercury && (<Mercury/>)}
         {ifVenus && (<Venus />)}
         {ifMars && (<Mars />)}
         {ifJupiter && (<Jupiter />)}
         {ifSaturn && (<Saturn />)}
       </div>
+    </div>
+    )}
     </div>
   )
 }

@@ -10,7 +10,6 @@ import { useHistory } from 'react-router-dom'
 const ImageUnit = (props) => {
   const [showDescription, setShowDescription] = useState(false)
   const [error, setError] = useState('')
-  const [toggleRefresh, setToggleRefresh] = useState(true)
   const history = useHistory()
 
   /**
