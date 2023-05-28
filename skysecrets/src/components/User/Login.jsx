@@ -74,7 +74,7 @@ const Login = (props) => {
       username,
       password
     }
-    const url = 'http://localhost:8081/api/v1/login'
+    const url = `${process.env.REACT_APP_AUTH_API_BASE_URL}/login`
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -101,7 +101,7 @@ const Login = (props) => {
    * @returns {object} account status.
    */
   const userAccountStatus = async () => {
-    const accountUrl = 'http://localhost:8080/api/v1/account'
+    const accountUrl = `${process.env.REACT_APP_API_BASE_URL}/account`
     const accountResponse = await fetch(accountUrl, {
       credentials: 'include'
     })
@@ -121,7 +121,7 @@ const Login = (props) => {
    * @returns {object} account info.
    */
   const createUserAccount = async () => {
-    const accountUrl = 'http://localhost:8080/api/v1/account'
+    const accountUrl = `${process.env.REACT_APP_API_BASE_URL}/account`
     const accountResponse = await fetch(accountUrl, {
       method: 'POST',
       credentials: 'include'

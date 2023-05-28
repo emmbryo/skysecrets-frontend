@@ -34,7 +34,7 @@ const Library = () => {
    * @returns {object} account id.
    */
   const getAccountId = async () => {
-    const urlGetId = 'http://localhost:8080/api/v1/account/'
+    const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
     const responseId = await fetch(urlGetId, {
       method: 'GET',
       headers: {
@@ -56,7 +56,7 @@ const Library = () => {
    * @returns {object} images.
    */
   const getImageData = async (accountId) => {
-    const url = `http://localhost:8080/api/v1/account/${accountId}/images`
+    const url = `${process.env.REACT_APP_API_BASE_URL}/account/${accountId}/images`
 
     const response = await fetch(url, {
       credentials: 'include'

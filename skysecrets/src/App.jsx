@@ -33,7 +33,7 @@ function App () {
      */
     const checkUser = async () => {
       try {
-        const url = 'http://localhost:8080/api/v1/account/user'
+        const url = `${process.env.REACT_APP_API_BASE_URL}/account/user`
         const response = await fetch(url, {
           credentials: 'include'
         })

@@ -12,7 +12,7 @@ import { UserContext } from '../../context/UserContext'
 const Venus = () => {
   const [showInfo, setShowInfo] = useState(false)
   const { location } = useContext(UserContext)
-  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/planets/venus', { lat: location[0], lng: location[1] })
+  const { postData, postIsPending, postError } = useFetchPost(`${process.env.REACT_APP_API_BASE_URL}/planets/venus`, { lat: location[0], lng: location[1] })
 
   /**
    * Toggles showInfo.

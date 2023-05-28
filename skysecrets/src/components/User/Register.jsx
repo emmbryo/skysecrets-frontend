@@ -51,7 +51,7 @@ const Register = (props) => {
         firstName,
         lastName
       }
-      const url = 'http://localhost:8081/api/v1/register'
+      const url = `${process.env.REACT_APP_AUTH_API_BASE_URL}/register`
       const response = await fetch(url, {
         method: 'POST',
         headers: {

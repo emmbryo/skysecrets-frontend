@@ -12,8 +12,8 @@ import useFetchPost from '../functions/useFetchPost'
  */
 const Aurora = () => {
   const { location } = useContext(UserContext)
-  const { data, isPending, error } = useFetch('http://localhost:8080/api/v1/aurora')
-  const { postData, postIsPending, postError } = useFetchPost('http://localhost:8080/api/v1/aurora/analysis', { lat: location[0], lng: location[1] })
+  const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/aurora`)
+  const { postData, postIsPending, postError } = useFetchPost(`${process.env.REACT_APP_API_BASE_URL}/aurora/analysis`, { lat: location[0], lng: location[1] })
   const [show, setShow] = useState(false)
 
   /**
