@@ -237,7 +237,7 @@ h3 {
 }
 
 .sidebar-container img {
-  width: 40px;
+  width: 45px;
 }
 .sidebar-container #saturn {
   width: 60px;
@@ -652,6 +652,15 @@ h3 {
   background: rgb(171, 3, 3);
 }
 
+.index-button {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgb(41, 36, 76);
+  color: white;
+}
+
 /* sun and moon overview */
 .sun-moon-icon {
   width: 40px;
@@ -719,6 +728,14 @@ h3 {
 
 .planets-overview-images #saturn {
   width: 80px;
+}
+.planets-overview-images #mercury {
+  border: solid 1px rgb(66, 43, 15);
+  border-radius: 50%;
+}
+.planets-overview-images #venus {
+  border: solid 1px rgb(39, 38, 37);
+  border-radius: 50%;
 }
 
 .under-horizon {

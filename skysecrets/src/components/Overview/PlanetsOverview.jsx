@@ -30,8 +30,8 @@ const PlanetsOverview = () => {
           {!postIsPending && postData && (
             <div className="planets-overview-images">
               <div className="round-planets">
-                <img className={postData.mercury ? ' ' : 'under-horizon'} src={ mercury } alt="mercury"/>
-                <img className={postData.venus ? ' ' : 'under-horizon'} src={ venus } alt="venus"/>
+                <img className={postData.mercury ? ' ' : 'under-horizon'} src={ mercury } alt="mercury" id="mercury"/>
+                <img className={postData.venus ? ' ' : 'under-horizon'} src={ venus } alt="venus" id="venus"/>
                 <img className={postData.mars ? ' ' : 'under-horizon'} src={ mars } alt="mars"/>
                 <img className={postData.jupiter ? ' ' : 'under-horizon'} src={ jupiter } alt="jupiter"/>
             </div>

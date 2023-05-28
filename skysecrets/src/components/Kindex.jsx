@@ -42,7 +42,7 @@ const Kindex = () => {
       <h3>Kp-index</h3>
       <p>The Kp Index is a globally averaged measure on the disturbances of earth's magnetic field. It is described by a scale of 0-9 with 1 being calm and 5 or more indication a geomagnetic storm. Simplified: The higher the number, the higher the chances for aurora.</p>
       {!showInfo && (
-        <button onClick={handleInfo}>More info</button>
+        <button className="index-button" onClick={handleInfo}>More info</button>
       )}
       {showInfo && (
         <div className="extra-info">
@@ -50,7 +50,7 @@ const Kindex = () => {
           <p>Solar activity, particularly geomagnetic storms and coronal mass ejections (CMEs) from the Sun, can significantly impact the Kp Index. When a strong solar event occurs, such as a CME interacting with Earth's magnetosphere, it can cause geomagnetic disturbances and increase the Kp Index values.</p>
           <p>Higher Kp Index values, usually ranging from 0 to 9, indicate a higher level of geomagnetic activity. Values of 5 or above are generally associated with increased chances of aurora sightings at higher latitudes.</p>
           <p>Therefore, while the Kp Index is not a direct measure of solar activity, it serves as an indicator of the resulting geomagnetic disturbances caused by solar activity. It is commonly used by researchers, scientists, and enthusiasts to assess the potential for aurora sightings and monitor the level of geomagnetic activity.</p>
-          <button onClick={handleInfo}>Hide info</button>
+          <button className="index-button" onClick={handleInfo}>Hide info</button>
         </div>
       )}
       <table>
