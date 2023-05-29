@@ -60,7 +60,7 @@ const Login = (props) => {
       setUser(true)
       setUsername('')
       setPassword('')
-      history.push('/start')
+      history.goBack()
     }
   }
 

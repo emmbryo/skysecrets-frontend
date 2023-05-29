@@ -103,7 +103,10 @@ const Register = (props) => {
           placeholder="Username"
           value={username}
           onFocus={() => setShowError(false)}
-          onChange={(event) => setUsername(event.target.value)}/>
+          onChange={(event) => {
+            setUsername(event.target.value)
+            setError('')
+          }}/>
         <label htmlFor="password">
           Password (min 10 chars)
         </label>
@@ -118,7 +121,10 @@ const Register = (props) => {
           placeholder="***********"
           value={password}
           onFocus={() => setShowError(false)}
-          onChange={(event) => setPassword(event.target.value)}/>
+          onChange={(event) => {
+            setPassword(event.target.value)
+            setError('')
+          }}/>
         <label htmlFor="email">
           E-mail
         </label>
@@ -132,7 +138,10 @@ const Register = (props) => {
           placeholder="your-email@mail.com"
           value={email}
           onFocus={() => setShowError(false)}
-          onChange={(event) => setEmail(event.target.value)} />
+          onChange={(event) => {
+            setEmail(event.target.value)
+            setError('')
+          }}/>
         <label htmlFor="first-name">
           First Name
         </label>
@@ -145,7 +154,10 @@ const Register = (props) => {
           placeholder="first name"
           value={firstName}
           onFocus={() => setShowError(false)}
-          onChange={(event) => setFirstName(event.target.value)} />
+          onChange={(event) => {
+            setFirstName(event.target.value)
+            setError('')
+          }}/>
         <label htmlFor="last-name">
           Last Name
         </label>
@@ -158,7 +170,10 @@ const Register = (props) => {
           placeholder="last name"
           value={lastName}
           onFocus={() => setShowError(false)}
-          onChange={(event) => setLastName(event.target.value)}/>
+          onChange={(event) => {
+            setLastName(event.target.value)
+            setError('')
+          }}/>
         <input
           className="submit-button"
           type="submit"

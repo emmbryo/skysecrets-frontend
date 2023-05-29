@@ -38,7 +38,7 @@ const DropDownMenu = () => {
           credentials: 'include'
         })
         if (!response.ok) {
-          throw new Error('Something went wrong with the fetch')
+          throw new Error('Server not responding')
         }
         const status = await response.json()
         console.log(status)

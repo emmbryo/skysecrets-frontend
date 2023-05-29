@@ -2,7 +2,7 @@
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import iconImage from '../img/placeholder.png'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
@@ -26,6 +26,7 @@ const Map = () => {
       lng: location[1]
     }
   }
+  const [error, setError] = useState(null)
 
   /**
    * Updates the location.
@@ -43,7 +44,6 @@ const Map = () => {
    */
   const handleSubmit = async (event) => {
     const account = await getAccountId()
-    console.log(account)
     await updateLocation(account)
     // history.push('/user')
   }
@@ -55,18 +55,22 @@ const Map = () => {
    */
   const getAccountId = async () => {
     const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
-    const responseId = await fetch(urlGetId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include'
-    })
-    if (!responseId.ok) {
-      throw new Error('Something went wrong with the fetch')
+    try {
+      const responseId = await fetch(urlGetId, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      })
+      if (!responseId.ok) {
+        throw new Error('Server not responding')
+      }
+      const account = await responseId.json()
+      return account
+    } catch (error) {
+      setError(error?.message)
     }
-    const account = await responseId.json()
-    return account
   }
 
   /**
@@ -86,11 +90,11 @@ const Map = () => {
         body: JSON.stringify(locationPayload)
       })
       if (!response.ok) {
-        throw new Error('Something went wrong with the fetch')
+        throw new Error('Server not responding')
       }
       history.push('/overview')
     } catch (error) {
-      console.log(error.message)
+      setError(error?.message)
     }
   }
 
@@ -129,6 +133,11 @@ const Map = () => {
           </Marker>}
           <MapEvents handleClick={handleCLick} />
       </MapContainer>
+      { error && (
+        <div className="error-message">
+          <p>{error}</p>
+        </div>
+      )}
       { user && (
         <div className="map-footer">
           <button id="map-button" onClick={handleSubmit}>Save location</button>

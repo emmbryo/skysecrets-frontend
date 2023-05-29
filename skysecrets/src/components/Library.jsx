@@ -9,7 +9,14 @@ import ImageUnit from './ImageUnit'
  */
 const Library = () => {
   const [images, setImages] = useState([])
-  const [populate, setPopulate] = useState(false)
+  const [error, setError] = useState(null)
+
+  /**
+   * Signals a refresh of page.
+   */
+  const handleRefresh = () => {
+    window.location.reload()
+  }
 
   useEffect(() => {
     getImages()
@@ -22,10 +29,9 @@ const Library = () => {
       const account = await getAccountId()
       if (account.account) {
         setImages(await getImageData(account.accountId))
-        setPopulate(true)
       }
     } catch (error) {
-      console.log(error)
+      setError(error?.message)
     }
   }
   /**
@@ -43,7 +49,7 @@ const Library = () => {
       credentials: 'include'
     })
     if (!responseId.ok) {
-      throw new Error('Something went wrong with the fetch')
+      throw new Error('Server not responding')
     }
     const account = await responseId.json()
     return account
@@ -71,10 +77,15 @@ const Library = () => {
   return (
     <div className="library-container">
       <h3>My library</h3>
+      { error && (
+        <div className="error msg">
+          <p>{error}</p>
+        </div>
+      )}
       { images && (
         <div className="library-images-container">
           {images.map(image => {
-            return <ImageUnit image={image} key={image._id} />
+            return <ImageUnit image={image} key={image._id} onImageUnitChange={handleRefresh} />
           })}
         </div>
       )}
