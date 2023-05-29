@@ -10,10 +10,10 @@ import { UserContext } from '../context/UserContext'
  * @returns {object} react component.
  */
 const Moon = () => {
-  const [phase, setPhase] = useState(0)
-  const [phaseText, setPhaseText] = useState('Waxing Crescent')
-  const [moonClass, setMoonClass] = useState('moon-container-growing')
-  const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/api/v1/moon`)
+  const [phase, setPhase] = useState()
+  const [phaseText, setPhaseText] = useState('')
+  const [moonClass, setMoonClass] = useState('')
+  const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/moon`)
   const { location } = useContext(UserContext)
   const { postData, postIsPending, postError } = useFetchPost(`${process.env.REACT_APP_API_BASE_URL}/moon/times`, { lat: location[0], lng: location[1] })
 
@@ -21,7 +21,7 @@ const Moon = () => {
     if (data) {
       setPhase(data.illumination)
       setPhaseText(data.current_phase)
-      if (['Waxing Crescent', '1st Quarter', 'Waxing Gibbous'].includes(data.current_phase)) {
+      if (process.env.REACT_APP_MOON_PHASES_GROWING.includes(data.current_phase)) {
         setMoonClass('moon-container-growing')
       } else {
         setMoonClass('moon-container-decreasing')
@@ -41,7 +41,7 @@ const Moon = () => {
 
   return (
     <div id="the-moon">
-      {error && <div className="error-message">{ error }</div>}
+      { error && <div className="error-message"><p>{ error }</p></div>}
       { isPending && (<p>Loading...</p>)}
       { !isPending && (<div className={ moonClass }>
         <div id="circle-wrap" >
@@ -64,6 +64,7 @@ const Moon = () => {
       <p>Phase: { phaseText }</p>
       <p>Illumination: { phase }%</p>
       {postIsPending && (<p>Loading...</p>)}
+      { postError && <div className="error-message"><p>{ postError }</p></div>}
       {!postIsPending && postData && (
         <div>
           <div>

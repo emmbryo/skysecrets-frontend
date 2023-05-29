@@ -56,7 +56,7 @@ const Login = (props) => {
       setShowError(true)
     }
 
-    if (user.status === 'logged in') {
+    if (user.status === process.env.REACT_APP_API_LOGIN_RESPONSE) {
       setUser(true)
       setUsername('')
       setPassword('')

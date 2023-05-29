@@ -30,16 +30,16 @@ const Mars = () => {
         <div className="horizon-info"><p>Loading...</p></div>
       )}
       {postError && (
-        <div className="horizon-info">an error occurred: {postError}</div>
+        <div className="horizon-info error-message">an error occurred: {postError}</div>
       )}
       {!postIsPending && postData.planetOverHorizon && (
         <div className="horizon-info">
           <p>Over horizon!</p>
         </div>
       )}
-      {!postIsPending && !postData.planetOverHorizon && (
+      {!postIsPending && !postData.planetOverHorizon && !postError && (
         <div className="horizon-info">
-          <p>Not over horizon :(</p>
+          <p>Not over horizon</p>
         </div>
       )}
       <div id="mars" className="planet">

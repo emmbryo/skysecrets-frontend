@@ -32,7 +32,6 @@ const Register = (props) => {
   }, [error])
 
   useEffect(() => {
-    console.log('showError ändrats', showError)
   }, [showError])
 
   /**

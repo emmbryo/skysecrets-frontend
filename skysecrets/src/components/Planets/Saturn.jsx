@@ -30,20 +30,20 @@ const Saturn = () => {
         <div className="horizon-info"><p>Loading...</p></div>
       )}
       {postError && (
-        <div className="horizon-info">an error occurred: {postError}</div>
+        <div className="horizon-info error-message">an error occurred: {postError}</div>
       )}
       {!postIsPending && postData.planetOverHorizon && (
         <div className="horizon-info">
           <p>Over horizon!</p>
         </div>
       )}
-      {!postIsPending && !postData.planetOverHorizon && (
+      {!postIsPending && !postData.planetOverHorizon && !postError && (
         <div className="horizon-info">
-          <p>Not over horizon :(</p>
+          <p>Not over horizon</p>
         </div>
       )}
       <div className="planet" id="saturn">
-        <img src={saturn} alt="saturn" />
+        <img src={saturn} alt="saturn" id="saturn" />
         {!showInfo && (
           <button className="planet-button" onClick={handleClick}>Show info</button>
         )}

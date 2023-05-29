@@ -44,9 +44,12 @@ const Map = () => {
    * @param {object} event - the triggering event.
    */
   const handleSubmit = async (event) => {
-    const account = await getAccountId()
-    await updateLocation(account)
-    // history.push('/user')
+    try {
+      const account = await getAccountId()
+      await updateLocation(account)
+    } catch (error) {
+      setError(error?.message)
+    }
   }
 
   /**

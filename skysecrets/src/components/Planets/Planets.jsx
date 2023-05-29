@@ -82,17 +82,17 @@ const Planets = () => {
     </div>
     {!ifOverview && (
       <div className="planets-container">
-      <div className="planet-side-bar" onClick={handleClick}>
-        <Sidebar />
+        <div className="planet-side-bar" onClick={handleClick}>
+          <Sidebar />
+        </div>
+        <div className="planet-info">
+          {ifMercury && (<Mercury/>)}
+          {ifVenus && (<Venus />)}
+          {ifMars && (<Mars />)}
+          {ifJupiter && (<Jupiter />)}
+          {ifSaturn && (<Saturn />)}
+        </div>
       </div>
-      <div className="planet-info">
-        {ifMercury && (<Mercury/>)}
-        {ifVenus && (<Venus />)}
-        {ifMars && (<Mars />)}
-        {ifJupiter && (<Jupiter />)}
-        {ifSaturn && (<Saturn />)}
-      </div>
-    </div>
     )}
     </div>
   )

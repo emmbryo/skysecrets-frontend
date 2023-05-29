@@ -213,7 +213,7 @@ h3 {
 /* planets */
 .planets-container {
   display: grid;
-  grid-template-columns: 5% 20% 70% 5%;
+  grid-template-columns: 1% 20% 80% 4%;
   grid-template-rows: 30px auto;
   grid-template-areas: 
     ". . . ."
@@ -225,6 +225,10 @@ h3 {
 }
 .planet img {
   margin: 20px;
+}
+.saturn-container #saturn #saturn {
+  width: 230px;
+  margin: 30px 0px 35px 0px;
 }
 
 .sidebar-container {
@@ -337,6 +341,7 @@ h3 {
 }
 
 .planet-table {
+  grid-area: planet-table;
   color: white;
   margin-top: 40px;
 }
@@ -345,13 +350,13 @@ h3 {
   border: solid 0.5px white;
   border-radius: 5px;
   padding: 5px;
-  width: 33%;
+  font-size: 14px;
 }
 
 .planet-table td img {
   width: 20px;
   padding: 0px;
-  margin-left: 10px;
+  margin: 0px 0px 0px 4px;
 }
 
 .planet-table #earth-compare {

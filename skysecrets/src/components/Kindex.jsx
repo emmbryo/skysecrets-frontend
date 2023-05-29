@@ -127,5 +127,4 @@ const Kindex = () => {
     </div>
   )
 }
-
 export default Kindex
