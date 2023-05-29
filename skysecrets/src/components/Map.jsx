@@ -7,6 +7,7 @@ import iconImage from '../img/placeholder.png'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import Location from './Location'
+import getAccountId from '../functions/accountId'
 
 /**
  * Map component.
@@ -46,31 +47,6 @@ const Map = () => {
     const account = await getAccountId()
     await updateLocation(account)
     // history.push('/user')
-  }
-
-  /**
-   * Gets the account id.
-   *
-   * @returns {object} account id.
-   */
-  const getAccountId = async () => {
-    const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
-    try {
-      const responseId = await fetch(urlGetId, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include'
-      })
-      if (!responseId.ok) {
-        throw new Error('Server not responding')
-      }
-      const account = await responseId.json()
-      return account
-    } catch (error) {
-      setError(error?.message)
-    }
   }
 
   /**

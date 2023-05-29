@@ -10,7 +10,7 @@ import Overview from './components/Overview/Overview'
 import Kindex from './components/Kindex'
 import Location from './components/Location'
 import User from './components/User/User'
-import Library from './components/Library'
+import Library from './components/Library/Library'
 import Welcome from './components/Welcome'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
