@@ -20,7 +20,7 @@ const Start = () => {
           <p className="start-text">To get accurate information please set a location of interest:</p>
         </div>
         <button className="start-button">
-          <Link to="/map">
+          <Link to="./map">
             <p>Set Location</p>
           </Link>
         </button>
@@ -32,7 +32,7 @@ const Start = () => {
         <p className="start-text">To be able to set location and view your library, please log in:</p>
       </div>
       <button className="start-button">
-        <Link to="/user">
+        <Link to="./user">
           <p>Login</p>
         </Link>
       </button>
@@ -43,33 +43,33 @@ const Start = () => {
         <Location />
       </div>
       <button className="start-button">
-        <Link to="/overview">
+        <Link to="./overview">
           <p>Overview</p>
         </Link>
       </button>
       <button className="start-button">
-        <Link to="/aurora">
+        <Link to="./aurora">
           <p>Aurora</p>
         </Link>
       </button>
       <button className="start-button">
-        <Link to="/moon">
+        <Link to="./moon">
           <p>Moon</p>
         </Link>
       </button>
       <button className="start-button">
-        <Link to="/planets">
+        <Link to="./planets">
           <p>Planets</p>
         </Link>
       </button>
       <button className="start-button">
-        <Link to="/image">
+        <Link to="./image">
           <p>Image of the day</p>
         </Link>
       </button>
       { user && (
         <button className="start-button">
-        <Link to="/library">
+        <Link to="./library">
           <p>Your Library</p>
         </Link>
       </button>
