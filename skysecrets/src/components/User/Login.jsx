@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState, useRef, useEffect, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { history } from '../../history'
 import { UserContext } from '../../context/UserContext'
 
 /**
@@ -18,7 +18,6 @@ const Login = (props) => {
   const [showError, setShowError] = useState(false)
 
   const usernameRef = useRef()
-  const history = useHistory()
 
   useEffect(() => {
     usernameRef.current.focus()

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import menu from '../img/menu-white.png'
-import { useHistory } from 'react-router-dom'
+import { history } from '../history'
 import { useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 
@@ -12,7 +12,6 @@ import { UserContext } from '../context/UserContext'
 const DropDownMenu = () => {
   const { user, setUser } = useContext(UserContext)
   const [shown, setShown] = useState('drop-down-menu hidden')
-  const history = useHistory()
 
   /**
    * Toggles the menu.
@@ -41,7 +40,6 @@ const DropDownMenu = () => {
           throw new Error('Server not responding')
         }
         const status = await response.json()
-        console.log(status)
       } catch (error) {
         console.log(error)
       }
@@ -59,18 +57,18 @@ const DropDownMenu = () => {
       </div>
       <div className={shown} onClick={menuClick}>
         { !user && (
-          <div className="drop-down-item" id="./user" onClick={clickLink}>Login</div>
+          <div className="drop-down-item" id="/user" onClick={clickLink}>Login</div>
         )}
-        <div className="drop-down-item" id="./start" onClick={clickLink}>Start</div>
-        <div className="drop-down-item" id="./map" onClick={clickLink}>Location</div>
-        <div className="drop-down-item" id="./overview" onClick={clickLink}>Overview</div>
-        <div className="drop-down-item" id="./image" onClick={clickLink}>Image of the day</div>
-        <div className="drop-down-item" id="./aurora" onClick={clickLink}>Aurora</div>
-        <div className="drop-down-item" id="./moon" onClick={clickLink}>Moon</div>
-        <div className="drop-down-item" id="./planets" onClick={clickLink}>Planets</div>
-        <div className="drop-down-item" id="./index" onClick={clickLink}>K-index</div>
+        <div className="drop-down-item" id="/start" onClick={clickLink}>Start</div>
+        <div className="drop-down-item" id="/map" onClick={clickLink}>Location</div>
+        <div className="drop-down-item" id="/overview" onClick={clickLink}>Overview</div>
+        <div className="drop-down-item" id="/image" onClick={clickLink}>Image of the day</div>
+        <div className="drop-down-item" id="/aurora" onClick={clickLink}>Aurora</div>
+        <div className="drop-down-item" id="/moon" onClick={clickLink}>Moon</div>
+        <div className="drop-down-item" id="/planets" onClick={clickLink}>Planets</div>
+        <div className="drop-down-item" id="/index" onClick={clickLink}>K-index</div>
         { user && (
-          <div className="drop-down-item" id="./library" onClick={clickLink}>Your Library</div>
+          <div className="drop-down-item" id="/library" onClick={clickLink}>Your Library</div>
         )}
         { user && (
          <div className="drop-down-item" id="logout" onClick={clickLink}>Logout</div>

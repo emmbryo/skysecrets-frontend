@@ -14,11 +14,11 @@ import saturn from './img/saturn.png'
 const Sidebar = () => {
   return (
     <div className="sidebar-container">
-      <Link to="../planets/mercury"><img src={ mercury } alt="mercury" id="mercury"/></Link>
-      <Link to="../planets/venus"><img src={ venus } alt="venus" id="venus"/></Link>
-      <Link to="../planets/mars"><img src={ mars } alt="mars" id="mars"/></Link>
-      <Link to="../planets/jupiter"><img src={ jupiter } alt="jupiter" id="jupiter"/></Link>
-      <Link to="../planets/saturn"><img id="saturn" src={ saturn } alt="saturn"/></Link>
+      <Link to="../planets/"><img src={ mercury } alt="mercury" id="mercury"/></Link>
+      <Link to="../planets/"><img src={ venus } alt="venus" id="venus"/></Link>
+      <Link to="../planets/"><img src={ mars } alt="mars" id="mars"/></Link>
+      <Link to="../planets/"><img src={ jupiter } alt="jupiter" id="jupiter"/></Link>
+      <Link to="../planets/"><img id="saturn" src={ saturn } alt="saturn"/></Link>
     </div>
   )
 }

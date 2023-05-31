@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import saturn from './Planets/img/saturn.png'
-import { useHistory } from 'react-router-dom'
+import { history } from '../history'
 import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 
@@ -10,7 +10,6 @@ import { UserContext } from '../context/UserContext'
  * @returns {object} react component.
  */
 const Welcome = () => {
-  const history = useHistory()
   const { user } = useContext(UserContext)
   return (
     <div className="welcome-container">

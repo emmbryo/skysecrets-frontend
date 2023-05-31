@@ -2,9 +2,9 @@
 import useFetch from '../functions/useFetch'
 import { useState, useContext } from 'react'
 import defaultImage from '../img/default.jpg'
-import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import getAccountId from '../functions/accountId'
+import { history } from '../history'
 
 /**
  * Image component.
@@ -16,7 +16,6 @@ const Image = () => {
   const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/image`)
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
-  const history = useHistory()
   const [errorMsg, setErrorMsg] = useState(null)
 
   /**

@@ -4,7 +4,7 @@ import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useContext, useState } from 'react'
 import iconImage from '../img/placeholder.png'
-import { useHistory } from 'react-router-dom'
+import { history } from '../history'
 import { UserContext } from '../context/UserContext'
 import Location from './Location'
 import getAccountId from '../functions/accountId'
@@ -19,7 +19,6 @@ const Map = () => {
     iconUrl: iconImage,
     iconSize: [38, 38]
   })
-  const history = useHistory()
   const { location, setLocation, user } = useContext(UserContext)
   const locationPayload = {
     location: {

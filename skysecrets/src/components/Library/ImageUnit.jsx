@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { history } from '../../history'
 import getAccountId from '../../functions/accountId'
 /**
  * ImageUnite component.
@@ -11,7 +11,6 @@ import getAccountId from '../../functions/accountId'
 const ImageUnit = (props) => {
   const [showDescription, setShowDescription] = useState(false)
   const [error, setError] = useState(null)
-  const history = useHistory()
 
   /**
    * Toggles the description.
