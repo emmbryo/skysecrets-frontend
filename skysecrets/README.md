@@ -17,11 +17,11 @@ As a guest user, you can:
 - Set a location, but this will not be saved if the page refreshes or the app is closed
 - Based on the location, the following is available:
   - Overview: A quick overview with sun, moon, planets and aurora.
-  - Aurora: chances of seeing aurora at the chosen location
-  - Moon: The phase, illumation and rise/setting times of the moon
-  - Image of the day: To see NASAs image of the day
-  - Planets: See which planets that are currently over the horizon and their parameters
-  - K-index: Information about Kp-index
+  - Aurora: chances of seeing aurora at the chosen location.
+  - Moon: The phase, illumation and rise/setting times of the moon.
+  - Image of the day: To see NASAs image of the day.
+  - Planets: See which planets that are currently over the horizon and their parameters.
+  - K-index: Information about Kp-index.
 
 ### Navigate
 Explore the app via the menu
