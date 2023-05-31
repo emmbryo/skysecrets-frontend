@@ -15,7 +15,7 @@ const useFetch = (url) => {
     fetch(url)
       .then(res => {
         if (!res.ok) {
-          throw Error('Something went wrong with the fetch.')
+          throw Error('Server not responding')
         }
         return res.json()
       })

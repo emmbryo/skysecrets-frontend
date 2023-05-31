@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import menu from '../img/menu-white.png'
-import { useHistory } from 'react-router-dom'
+import { history } from '../history'
 import { useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 
@@ -12,7 +12,6 @@ import { UserContext } from '../context/UserContext'
 const DropDownMenu = () => {
   const { user, setUser } = useContext(UserContext)
   const [shown, setShown] = useState('drop-down-menu hidden')
-  const history = useHistory()
 
   /**
    * Toggles the menu.
@@ -38,10 +37,9 @@ const DropDownMenu = () => {
           credentials: 'include'
         })
         if (!response.ok) {
-          throw new Error('Something went wrong with the fetch')
+          throw new Error('Server not responding')
         }
         const status = await response.json()
-        console.log(status)
       } catch (error) {
         console.log(error)
       }

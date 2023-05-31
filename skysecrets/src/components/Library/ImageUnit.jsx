@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { history } from '../../history'
+import getAccountId from '../../functions/accountId'
 /**
  * ImageUnite component.
  *
@@ -9,8 +10,7 @@ import { useHistory } from 'react-router-dom'
  */
 const ImageUnit = (props) => {
   const [showDescription, setShowDescription] = useState(false)
-  const [error, setError] = useState('')
-  const history = useHistory()
+  const [error, setError] = useState(null)
 
   /**
    * Toggles the description.
@@ -26,7 +26,6 @@ const ImageUnit = (props) => {
    */
   const deleteImage = async (event) => {
     try {
-      console.log(event.target.id)
       const accountId = await getAccountId()
 
       const url = `${process.env.REACT_APP_API_BASE_URL}/account/${accountId.accountId}/images`
@@ -43,36 +42,13 @@ const ImageUnit = (props) => {
       if (!response.ok) {
         setError('unable to delete')
       } else {
-        console.log('är vi ens här?')
-        history.push('/start')
+        props.onImageUnitChange()
       }
     } catch (error) {
       console.log(error)
     }
   }
 
-  /**
-   * Gets the account id.
-   *
-   * @returns {object} account id.
-   */
-  const getAccountId = async () => {
-    const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
-    const responseId = await fetch(urlGetId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include'
-    })
-    if (!responseId.ok) {
-      throw new Error('Something went wrong with the fetch')
-    }
-    const account = await responseId.json()
-    return account
-  }
-
-  console.log(props)
   return (
     <div className="image-unit-container" key={props.image._id}>
       <p>{props.image.title}</p>
@@ -90,6 +66,11 @@ const ImageUnit = (props) => {
           <button className="image-unit-button" onClick={toggleDescription}>Hide description</button>
       )}
       <button id={props.image._id} className="image-unit-button" onClick={deleteImage}>Delete from library</button>
+      { error && (
+        <div className="error-msg">
+          <p>{error}</p>
+        </div>
+      )}
       </div>
     </div>
   )

@@ -1,10 +1,12 @@
-
+/* eslint-disable no-unused-vars */
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-// eslint-disable-next-line no-unused-vars
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <App />
+    <BrowserRouter>
+        <App />
+    </ BrowserRouter>
 )

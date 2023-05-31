@@ -2,8 +2,9 @@
 import useFetch from '../functions/useFetch'
 import { useState, useContext } from 'react'
 import defaultImage from '../img/default.jpg'
-import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
+import getAccountId from '../functions/accountId'
+import { history } from '../history'
 
 /**
  * Image component.
@@ -15,7 +16,7 @@ const Image = () => {
   const { data, isPending, error } = useFetch(`${process.env.REACT_APP_API_BASE_URL}/image`)
   const [explanation, setExplanation] = useState()
   const [descriptionShown, setDescriptionShown] = useState(false)
-  const history = useHistory()
+  const [errorMsg, setErrorMsg] = useState(null)
 
   /**
    * Shows description.
@@ -39,36 +40,11 @@ const Image = () => {
    */
   const saveImage = async (event) => {
     try {
-      console.log('saving: ', data.title)
       const account = await getAccountId()
-      console.log(account)
       await updateImages(account)
     } catch (error) {
-      console.log(error)
+      setErrorMsg(error?.message)
     }
-
-    // history.push('/user')
-  }
-
-  /**
-   * Gets the account id.
-   *
-   * @returns {object} account id.
-   */
-  const getAccountId = async () => {
-    const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
-    const responseId = await fetch(urlGetId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include'
-    })
-    if (!responseId.ok) {
-      throw new Error('Something went wrong with the fetch')
-    }
-    const account = await responseId.json()
-    return account
   }
 
   /**
@@ -87,7 +63,7 @@ const Image = () => {
       body: JSON.stringify({ image: { url: data.url, description: data.explanation, copyright: data.copywrite, title: data.title } })
     })
     if (!response.ok) {
-      throw new Error('Something went wrong with the fetch')
+      throw new Error('Server not responding')
     }
     history.push('/library')
   }
@@ -125,6 +101,11 @@ const Image = () => {
       )}
       { !descriptionShown && (
         <button className="img-button" onClick={showDescription}>Show description</button>
+      )}
+      { errorMsg && (
+        <div className="error-msg">
+          <p>{error}</p>
+        </div>
       )}
       { user && (
         <button className="save-img-button" onClick={saveImage}>Save image to library</button>

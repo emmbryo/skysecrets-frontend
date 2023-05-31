@@ -22,7 +22,7 @@ const useFetchPost = (url, requestData) => {
     })
       .then(res => {
         if (!res.ok) {
-          throw Error('Something went wrong with the fetch.')
+          throw Error('Server not responding')
         }
         return res.json()
       })

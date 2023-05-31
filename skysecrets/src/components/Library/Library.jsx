@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react'
 import ImageUnit from './ImageUnit'
+import getAccountId from '../../functions/accountId'
 
 /**
  * Library component.
@@ -9,7 +10,14 @@ import ImageUnit from './ImageUnit'
  */
 const Library = () => {
   const [images, setImages] = useState([])
-  const [populate, setPopulate] = useState(false)
+  const [error, setError] = useState(null)
+
+  /**
+   * Signals a refresh of page.
+   */
+  const handleRefresh = () => {
+    window.location.reload()
+  }
 
   useEffect(() => {
     getImages()
@@ -22,31 +30,10 @@ const Library = () => {
       const account = await getAccountId()
       if (account.account) {
         setImages(await getImageData(account.accountId))
-        setPopulate(true)
       }
     } catch (error) {
-      console.log(error)
+      setError(error?.message)
     }
-  }
-  /**
-   * Gets the account id.
-   *
-   * @returns {object} account id.
-   */
-  const getAccountId = async () => {
-    const urlGetId = `${process.env.REACT_APP_API_BASE_URL}/account/`
-    const responseId = await fetch(urlGetId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include'
-    })
-    if (!responseId.ok) {
-      throw new Error('Something went wrong with the fetch')
-    }
-    const account = await responseId.json()
-    return account
   }
 
   /**
@@ -71,10 +58,15 @@ const Library = () => {
   return (
     <div className="library-container">
       <h3>My library</h3>
+      { error && (
+        <div className="error msg">
+          <p>{error}</p>
+        </div>
+      )}
       { images && (
         <div className="library-images-container">
           {images.map(image => {
-            return <ImageUnit image={image} key={image._id} />
+            return <ImageUnit image={image} key={image._id} onImageUnitChange={handleRefresh} />
           })}
         </div>
       )}
