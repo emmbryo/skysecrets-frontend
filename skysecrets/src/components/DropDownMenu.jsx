@@ -66,7 +66,7 @@ const DropDownMenu = () => {
         <div className="drop-down-item" id="/aurora" onClick={clickLink}>Aurora</div>
         <div className="drop-down-item" id="/moon" onClick={clickLink}>Moon</div>
         <div className="drop-down-item" id="/planets" onClick={clickLink}>Planets</div>
-        <div className="drop-down-item" id="/index" onClick={clickLink}>K-index</div>
+        <div className="drop-down-item" id="/index" onClick={clickLink}>Kp-index</div>
         { user && (
           <div className="drop-down-item" id="/library" onClick={clickLink}>Your Library</div>
         )}
