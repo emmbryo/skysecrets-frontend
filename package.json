@@ -1,5 +1,6 @@
 {
   "name": "skysecrets",
+  "git": "git@github.com:emmbryo/skysecrets-frontend.git",
   "homepage": "/skysecrets/",
   "version": "0.1.0",
   "private": true,
