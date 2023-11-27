@@ -10,7 +10,7 @@ import { UserContext } from '../context/UserContext'
  * @returns {object} react component.
  */
 const DropDownMenu = () => {
-  const { user, setUser } = useContext(UserContext)
+  const { setLocation, user, setUser } = useContext(UserContext)
   const [shown, setShown] = useState('drop-down-menu hidden')
 
   /**
@@ -44,6 +44,7 @@ const DropDownMenu = () => {
         console.log(error)
       }
       setUser(false)
+      setLocation([59.32915892217842, 18.093897700309757])
       history.push('/user')
     } else {
       history.push(`${event.target.id}`)
